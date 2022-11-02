@@ -49,9 +49,7 @@ module.exports.login = (req, res) => {
         // console.log("not file");
         res.status(404).json({ status: "erruser", message: "User not found" });
       } else {
-        // console.log("file");
-        // console.log("file");
-        // console.log("file");
+      
         let passvalidate = bcrypt.compareSync(password, find.password);
         // const passvalidate = find.password;
         // console.log(passvalidate);
