@@ -102,9 +102,7 @@
   height: 48px;
   padding-top: 12px;
 }
-.trangchu:hover {
-  /* color: aliceblue; */
-}
+
 .fontsize-navbar {
   font-size: 25px;
 }
@@ -369,8 +367,7 @@ main {
   }
 }
 /* mxh-share */
-.dropdown-all_share {
-}
+
 .share-change__share {
   width: 6vh;
   height: 6vh;

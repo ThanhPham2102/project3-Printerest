@@ -99,9 +99,7 @@
   height: 48px;
   padding-top: 12px;
 }
-.trangchu:hover {
-  /* color: aliceblue; */
-}
+
 .fontsize-navbar {
   font-size: 25px;
 }
@@ -195,11 +193,7 @@ main {
 .share-change {
   display: flex;
 }
-.share-change ul {
-}
-/* share */
-.dropdown-all_share {
-}
+
 .share-change__share {
   width: 100px;
   height: 44px;
@@ -414,9 +408,7 @@ img {
 .modal-sapxep {
   margin-top: 100px;
 }
-.btn-sapxep {
-  /* margin-left: 1000px; */
-}
+
 .modal-content {
   width: 700px;
   height: 700px;
@@ -432,8 +424,7 @@ img {
 .text-center {
   margin-top: 50px;
 }
-.img-modal {
-}
+
 .img-modal__body {
   width: 150px;
   height: 200px;
