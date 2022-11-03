@@ -113,12 +113,15 @@ app.use(cookieParser("i love feifei"));
 app.get("/", requireAuth, (req, res) => {
   res.redirect("/auth");
 });
-// use routes
+// Auth routes
 app.use("/auth", authRoutes);
-app.use("/HomePage", requireAuth, authRoutes);
-app.use("/resetpass", authRoutes);
-app.use("/HomePage/PersionalPage", requireAuth, authRoutes);
-app.use("/HomePage/profile", requireAuth, authRoutes);
+// app.use("/HomePage", requireAuth, authRoutes);
+// app.use("/resetpass", authRoutes);
+// app.use("/HomePage/PersionalPage", requireAuth, authRoutes);
+// app.use("/HomePage/profile", requireAuth, authRoutes);
+
+// Users routes
+// app.use("/admin", requireAdmin, userRoutes);
 
 // Listen on port
 app.listen(port, () => {
