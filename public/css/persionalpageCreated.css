@@ -1,0 +1,368 @@
+.navbar-brand__logo {
+    /* background-color:#e9e9e9 ; */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    /* display: none; */
+  }
+  .navbar-logo {
+    width: 22px;
+    height: 22px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    margin-top: 6px;
+    /* display: none; */
+  }
+  .navbar-brand__logo:hover {
+    /* display: block; */
+    background-color: #e9e9e9;
+  }
+  
+  .icon_navbar:hover {
+    background-color: #e9e9e9;
+  }
+  
+  .icon-navbar_thongbao:hover .thongbao {
+    display: block;
+    /* background-color: white; */
+    opacity: 1;
+    z-index: 1;
+  }
+  .navbar-tao {
+    margin-left: 10px;
+  }
+  
+  .search_input {
+    width: 130vh;
+    border-radius: 50px;
+    height: 48px;
+    margin-left: 20px;
+    background-color: #e9e9e9;
+  }
+  .thongbao {
+    font-size: 12px;
+    width: 80px;
+    background-color: black;
+    color: #e9e9e9;
+    border-radius: 6px;
+    padding: 5px;
+    margin-left: -10px;
+    display: none;
+    margin-top: 10px;
+    height: 30px;
+  }
+  .tinnhan {
+    font-size: 12px;
+    width: 70px;
+    background-color: black;
+    color: #e9e9e9;
+    border-radius: 6px;
+    padding: 5px;
+    margin-left: -10px;
+    display: none;
+    margin-top: 10px;
+    height: 30px;
+  }
+  .icon-navbar_tinnhan:hover .tinnhan {
+    display: block;
+    /* background-color: white; */
+    opacity: 1;
+    z-index: 1;
+  }
+  .hoso {
+    font-size: 12px;
+    width: 100px;
+    background-color: black;
+    color: #e9e9e9;
+    border-radius: 6px;
+    padding: 5px;
+    margin-left: -10px;
+    display: none;
+    margin-top: 17px;
+    height: 30px;
+  }
+  .icon-navbar__hoso:hover .hoso {
+    display: block;
+  
+    opacity: 1;
+    z-index: 10;
+  }
+  
+  .trangchu {
+    font-size: 16px;
+  
+    border-radius: 50px;
+    color: black;
+    text-align: center;
+    height: 48px;
+    padding-top: 12px;
+  }
+  
+  .fontsize-navbar {
+    font-size: 25px;
+  }
+  .icon-navbar {
+    border-radius: 60%;
+  
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin: auto;
+  }
+  .dropdown_menu_tao {
+    border-radius: 16px;
+    width: 200px;
+    left: 0;
+  }
+  /* .dropdown_menu_tao--li{
+  
+  } */
+  .avatar {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+  }
+  
+  .img-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .account-name {
+    margin-left: 10px;
+  }
+  
+  /* container */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    overflow: hidden;
+    /* background-color: black; */
+  }
+  main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .header_nav {
+    position: fixed;
+    width: 100%;
+  
+    z-index: 10;
+  }
+  
+  /* container_trang ca nhan */
+  .container1 {
+    position: relative;
+    width: 100%;
+    /* display: flex; */
+    /* gap:10px; */
+    padding: 80px 1vw;
+  }
+  
+  /* profile */
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    /* width: 500px; */
+    margin: auto;
+    /* border: 1px solid black; */
+    text-align: center;
+  }
+  .avatar-profile {
+    width: 130px;
+    height: 130px;
+  }
+  .img-profile {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
+  .share-change {
+    display: flex;
+  }
+  
+  .share-change__share {
+    width: 100px;
+    height: 44px;
+    border-radius: 50px;
+    /* border: 1px solid black; */
+    background-color: #e9e9e9;
+  }
+  .dropdown_menu_share_mxh {
+    border-radius: 16px;
+    width: 600px;
+  }
+  .btn-share__mxh {
+    margin-top: 10px;
+    font-size: 180px;
+  }
+  .item-mxh {
+    display: flex;
+  }
+  .boder_bottom {
+    width: 98%;
+    height: 1px;
+    border-bottom: 1px solid rgb(175, 166, 166);
+    margin-top: 40px;
+  }
+  .item-profile {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .dropdown-item_mxh {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-mxh {
+    width: 50px;
+    height: 50px;
+  }
+  .dropdown-item_mxh:hover {
+    background-color: #ffffff;
+  }
+  .btn-send-on-printer {
+    margin-top: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .btn-send-on-printer1 {
+    margin-top: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .share-change__share:hover {
+    background-color: #dfdada;
+  }
+  .btn_change:hover {
+    background-color: #dfdada;
+    color: black;
+  }
+  .avatar-profile_share {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .search-profile {
+    background-color: #dfdada;
+  }
+  
+  /* change profile */
+  .btn_change {
+    height: 44px;
+    width: 160px;
+    border-radius: 50px;
+    background-color: #e9e9e9;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    padding-top: 8px;
+  }
+  /* datao-daluu */
+  .created-screen {
+    display: flex;
+  }
+  .created {
+    width: 70px;
+    margin-right: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    height: 32px;
+    padding-top: 4px;
+    color: black;
+    background-color: #e9e9e9;
+    border-bottom: 1px solid black;
+  }
+  .created1 {
+    width: 70px;
+    margin-right: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    height: 32px;
+    padding-top: 4px;
+    color: black;
+  }
+  .created:hover {
+    color: black;
+    background-color: #e9e9e9;
+    border-bottom: 1px solid black;
+  }
+  .created1:hover {
+    color: black;
+    background-color: #e9e9e9;
+    border-bottom: 1px solid black;
+  }
+ 
+
+
+
+
+/* img navbar */
+  .card-img {
+    width: 10rem;
+    height: 13rem;
+    padding: 5px;
+  }
+  .card-img-top:hover {
+    /* background-color: black; */
+    opacity: 0.9;
+  }
+  .img-cmt {
+    width: 10px;
+    height: 30px;
+  }
+  
+  /* .img-avatar-cmt{
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+   } */
+  .imgPint {
+    width: 30px;
+    height: 33px;
+    text-align: center;
+    margin-left: 45%;
+  }
+  /* narbar */
+  .trangchu {
+    font-size: 16px;
+  
+    border-radius: 50px;
+    color: black;
+    text-align: center;
+    height: 48px;
+    padding-top: 12px;
+  }
+  /* ghiimytuing */
+  .Ghim-ytuong{
+    margin-top: 30px;
+  }
+  .created-color{
+   background-color: red;
+    color: #e9e9e9;
+    height: 40px;
+    border-radius: 50px;
+  }
+  .created-color:hover{
+    background-color: red;
+    color: #e9e9e9;
+  }

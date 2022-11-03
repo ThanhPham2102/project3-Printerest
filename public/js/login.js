@@ -136,6 +136,7 @@ formlogup.addEventListener("submit", (e) => {
         });
       }
       if (data.status === "useralrea") {
+        console.log("fuckyou");
         Swal.fire({
           icon: "warning",
           title: "Email đã tồn tại",

@@ -118,6 +118,8 @@ app.use("/auth", authRoutes);
 app.use("/HomePage", requireAuth, authRoutes);
 app.use("/resetpass", authRoutes);
 app.use("/HomePage/PersionalPage", requireAuth, authRoutes);
+app.use("/HomePage/PersionalPageCreadted", requireAuth, authRoutes);
+app.use("/HomePage/DetailPage", requireAuth, authRoutes);
 app.use("/HomePage/profile", requireAuth, authRoutes);
 
 // Listen on port

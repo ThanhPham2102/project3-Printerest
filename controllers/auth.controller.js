@@ -19,6 +19,13 @@ module.exports.resetpass = (req, res) => {
 module.exports.persionalpage = (req, res) => {
   res.render("PersionalPage.ejs");
 };
+module.exports.persionalpagecreated = (req, res) => {
+  res.render("PersionalPageCreadted.ejs");
+};
+module.exports.DetailPage = (req, res) => {
+  res.render("DetailPage.ejs");
+};
+
 module.exports.profile = (req, res) => {
   res.render("profile.ejs");
 };
@@ -49,7 +56,6 @@ module.exports.login = (req, res) => {
         // console.log("not file");
         res.status(404).json({ status: "erruser", message: "User not found" });
       } else {
-      
         let passvalidate = bcrypt.compareSync(password, find.password);
         // const passvalidate = find.password;
         // console.log(passvalidate);
@@ -171,11 +177,11 @@ module.exports.register = (req, res) => {
       if (rows.length > 0) {
         return Promise.reject("User already exists");
       } else {
-        return db.execute("INSERT INTO tbl_userpint VALUES(?, ?, ?)", [
-          email,
-          password,
-          age,
-        ]);
+        let id = Math.floor(Math.random() * 1000000);
+        return db.execute(
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [id, email, password, age, null, null, null, null, null, null]
+        );
       }
     })
     .then((data) => {
@@ -224,16 +230,13 @@ module.exports.signupregister = (req, res) => {
       // một mảng chứa 1 phần tử nếu tìm thấy user
       // [] nếu không tìm thấy
       if (rows.length > 0) {
-        res.status(200).json({
-          status: "useralrea",
-          message: " User already exists",
-        });
+        return Promise.reject("User already exists");
       } else {
-        return db.execute("INSERT INTO tbl_userpint VALUES(?, ?, ?)", [
-          email,
-          password,
-          age,
-        ]);
+        let id = Math.floor(Math.random() * 1000000);
+        return db.execute(
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [id, email, password, age, null, null, null, null, null, null]
+        );
       }
     })
     .then((data) => {
@@ -244,6 +247,9 @@ module.exports.signupregister = (req, res) => {
       });
     })
     .catch((err) => {
-      return res.status(500).json({ err: err });
+      return res.status(500).json({
+        status: "useralrea",
+        err: err,
+      });
     });
 };
