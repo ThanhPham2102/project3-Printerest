@@ -6,24 +6,25 @@ let strongRegex = new RegExp(
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
 );
 
+// show toan bo hinh anh ra:
 module.exports.getAllBlogs = (req, res) => {
   let { page_size_blogs, page_index_blogs } = req.query;
-  //   console.log(page_size_blogs, page_index_blogs);
+  console.log(page_size_blogs, page_index_blogs);
   page_index_blogs = Number(page_index_blogs) || 1;
   page_size_blogs = Number(page_size_blogs) || 5;
   let total = 0;
-  db.execute(`SELECT*FROM tbl_blogs`)
+  db.execute(`SELECT*FROM tbl_photopint`)
     .then((data) => {
       let [rows, cols] = data;
       total = rows.length;
-      return db.execute(`SELECT * FROM tbl_blogs LIMIT ${page_size_blogs} OFFSET
+      return db.execute(`SELECT * FROM tbl_photopint LIMIT ${page_size_blogs} OFFSET
     ${(page_index_blogs - 1) * page_size_blogs}`);
     })
     .then((data) => {
       //   console.log(data);
       let [rows, cols] = data;
-      //   console.log(rows);
-      res.render("blogs.ejs", {
+      console.log(rows);
+      res.render("photoPinterest", {
         rows,
         total,
         page_index_blogs,
@@ -36,7 +37,7 @@ module.exports.getAllBlogs = (req, res) => {
 module.exports.getOneBlogs = (req, res) => {
   console.log("getOneBlogs");
   let userId = req.params.id;
-  db.execute("SELECT * FROM tbl_blogs WHERE id =?", [userId]) //so sánh với id trong db
+  db.execute("SELECT * FROM tbl_photopint WHERE id =?", [userId]) //so sánh với id trong db
     .then((data) => {
       // console.log(data);
       let [rows] = data;
@@ -46,6 +47,7 @@ module.exports.getOneBlogs = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
 //CreatBlogs
 module.exports.creatBlogs = (req, res) => {
   console.log("creatBlogs");
@@ -60,7 +62,7 @@ module.exports.creatBlogs = (req, res) => {
   }
 
   let id = Math.floor(Math.random() * 1000);
-  db.execute("INSERT INTO  tbl_users VALUES(?,?,?,?,?)", [
+  db.execute("INSERT INTO  tbl_userpint VALUES(?,?,?,?,?)", [
     id,
     title,
     content,
@@ -79,12 +81,13 @@ module.exports.creatBlogs = (req, res) => {
       });
     });
 };
+
 //update blogs
 module.exports.updateBlogs = (req, res) => {
   console.log("updateBlogs");
   let { id } = req.params;
   let { title, content, img } = req.body;
-  db.execute("UPDATE tbl_blogs SET title = ?,content =?,img=? WHERE id=?", [
+  db.execute("UPDATE tbl_photopint SET title = ?,content =?,img=? WHERE id=?", [
     title,
     content,
     img,
@@ -101,7 +104,7 @@ module.exports.updateBlogs = (req, res) => {
 //delete blog
 module.exports.deleteBlogs = (req, res) => {
   let { id } = req.params;
-  db.execute("DELETE FROM tbl_blogs WHERE id=?", [id])
+  db.execute("DELETE FROM tbl_photopint WHERE id=?", [id])
     .then((data) => {
       //   console.log(data);
       res.status(200).json({
@@ -114,7 +117,7 @@ module.exports.deleteBlogs = (req, res) => {
 module.exports.getBlogsByUserId = (req, res) => {
   // console.log(req.params);//ra :id
   let { id } = req.params;
-  db.execute("SELECT*FROM tbl_blogs WHERE user_id =?", [id])
+  db.execute("SELECT*FROM tbl_photopint WHERE user_id =?", [id])
     .then((data) => {
       let [rows] = data;
       let renderData = _.chunk(rows, 3);

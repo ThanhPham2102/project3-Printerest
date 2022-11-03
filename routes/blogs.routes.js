@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const blogsController = require("../controllers/photos.controller");
-const { requireAdmin } = require("../middleware/auth.middleware");
+const blogsController = require("../controllers/blogs.controller");
+const { requireAdmin } = require("../middlewares/auth.middleware");
 // // blogs - get all
-router.get("/", requireAdmin, blogsController.getAllBlogs);
+router.get(
+  "/",
+  // requireAdmin,
+  blogsController.getAllBlogs
+);
 // // Get one by id
 router.get("/:id", blogsController.getOneBlogs);
 // // Create one by id

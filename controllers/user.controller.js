@@ -1,3 +1,5 @@
+
+// quan li nguoi dung
 //dung de xoa, them , bot nguoi dung
 
 const db = require("../models/db");
@@ -15,18 +17,18 @@ module.exports.getAll = (req, res) => {
   let total = 0;
 
   // )
-  db.execute(`SELECT * FROM tbl_users`)
+  db.execute(`SELECT * FROM tbl_userpint`)
     .then((data) => {
       let [rows, cols] = data;
       total = rows.length;
       return db.execute(
-        `SELECT * FROM tbl_users LIMIT ${page_size} OFFSET
+        `SELECT * FROM tbl_userpint LIMIT ${page_size} OFFSET
           ${(page_index - 1) * page_size}`
       );
     })
     .then((data) => {
       let [rows, cols] = data;
-      res.render("HomePage", { rows, total, page_size, page_index });
+      res.render("userPinterest", { rows, total, page_size, page_index });
     })
     .catch((err) => console.log(err));
 };
@@ -34,7 +36,7 @@ module.exports.getAll = (req, res) => {
 //
 module.exports.getOne = (req, res) => {
   let id = req.params.id; //lấy id từ param
-  db.execute("SELECT * FROM tbl_users WHERE id =?", [id]) //so sánh với id trong db
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
       // console.log(data);
       let [rows] = data;
@@ -61,14 +63,14 @@ module.exports.CreateUser = (req, res) => {
   password = bcrypt.hashSync(password, saltRoundds);
   // console.log(password);
   let id = Math.floor(Math.random() * 1000);
-  db.execute("SELECT * FROM tbl_users WHERE email=?", [email])
+  db.execute("SELECT * FROM tbl_userpint WHERE email=?", [email])
     .then((data) => {
       let [row] = data;
       console.log(row);
       if (row.length > 0) {
         res.status(404).json({ message: "User already exist" });
       } else {
-        return db.execute("INSERT INTO tbl_users VALUES(?,?,?,?,?,?,?)", [
+        return db.execute("INSERT INTO tbl_userpint VALUES(?,?,?,?,?,?,?)", [
           id,
           null,
           null,
@@ -90,7 +92,7 @@ module.exports.UpdateUser = (req, res) => {
   let { id } = req.params;
   let { name, username, website, phone } = req.body;
   db.execute(
-    "UPDATE tbl_users SET name = ?,username =?,website=?,phone=? WHERE id=?",
+    "UPDATE tbl_userpint SET name = ?,username =?,website=?,phone=? WHERE id=?",
     [name, username, website, phone, id]
   )
     .then((data) => {
@@ -104,7 +106,7 @@ module.exports.UpdateUser = (req, res) => {
 //DeleteUser
 module.exports.DeleteUser = (req, res) => {
   let { id } = req.params;
-  db.execute("DELETE FROM tbl_users WHERE id=?", [id])
+  db.execute("DELETE FROM tbl_userpint WHERE id=?", [id])
     .then((data) => {
       //   console.log(data);
       res.status(200).json({
