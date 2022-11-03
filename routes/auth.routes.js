@@ -12,6 +12,8 @@ router.get("/resetpass", authController.resetpass);
 router.post("/resetpass", authController.loginresetpass);
 router.post("/resetpass", authController.signupregister);
 router.get("/HomePage/PersionalPage", authController.persionalpage);
+router.get("/HomePage/PersionalPageCreated", authController.persionalpagecreated);
+router.get("/HomePage/DetailPage", authController.DetailPage);
 router.get("/HomePage/profile", authController.profile);
 
 module.exports = router;

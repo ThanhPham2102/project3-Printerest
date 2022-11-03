@@ -19,6 +19,13 @@ module.exports.resetpass = (req, res) => {
 module.exports.persionalpage = (req, res) => {
   res.render("PersionalPage.ejs");
 };
+module.exports.persionalpagecreated = (req, res) => {
+  res.render("PersionalPageCreadted.ejs");
+};
+module.exports.DetailPage = (req, res) => {
+  res.render("DetailPage.ejs");
+};
+
 module.exports.profile = (req, res) => {
   res.render("profile.ejs");
 };
@@ -49,9 +56,6 @@ module.exports.login = (req, res) => {
         // console.log("not file");
         res.status(404).json({ status: "erruser", message: "User not found" });
       } else {
-        // console.log("file");
-        // console.log("file");
-        // console.log("file");
         let passvalidate = bcrypt.compareSync(password, find.password);
         // const passvalidate = find.password;
         // console.log(passvalidate);
