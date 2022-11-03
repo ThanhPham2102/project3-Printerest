@@ -91,8 +91,10 @@ const ejs = require("ejs");
 
 // import routes
 const authRoutes = require("./routes/auth.routes.js");
+const userRoutes = require("./routes/users.routes");
 const { requireAuth } = require("./middlewares/auth.middleware");
 const cookieParser = require("cookie-parser");
+let blogsRoutes = require("./routes/blogs.routes.js");
 
 // setup view engine (ejs)
 
@@ -115,13 +117,21 @@ app.get("/", requireAuth, (req, res) => {
 });
 // use routes
 app.use("/auth", authRoutes);
-app.use("/HomePage", requireAuth, authRoutes);
-app.use("/resetpass", authRoutes);
-app.use("/HomePage/PersionalPage", requireAuth, authRoutes);
-app.use("/HomePage/PersionalPageCreadted", requireAuth, authRoutes);
-app.use("/HomePage/DetailPage", requireAuth, authRoutes);
-app.use("/HomePage/profile", requireAuth, authRoutes);
+// blogs Router
+app.use(
+  "/blogs",
+  // requireAuth, requireAdmin,
+  blogsRoutes
+);
 
+// admin
+// app.use("/Admin/users", requireAuth, authRoutes);
+
+app.use(
+  "/users",
+  // requireAuth,
+  userRoutes
+);
 // Listen on port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

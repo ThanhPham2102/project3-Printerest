@@ -139,13 +139,13 @@ tbodyBlogs.addEventListener("click", (e) => {
     // Hiển thị ra message update thành công
   }
 });
-// window.onload = function () {
-//   const urlSearchParams = new URLSearchParams(window.location.search);
-//   const params = Object.fromEntries(urlSearchParams.entries());
-//   let pages = document.getElementsByClassName("page-item");
-//   let activePage = params.page_index_blogs;
-//   pages = Array.from(pages);
-//   pages.pop();
-//   pages.shift();
-//   pages[activePage - 1].classList.add("active");
-// };
+window.onload = function () {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  let pages = document.getElementsByClassName("page-item");
+  let activePage = params.page_index_blogs;
+  pages = Array.from(pages);
+  pages.pop();
+  pages.shift();
+  pages[activePage - 1].classList.add("active");
+};

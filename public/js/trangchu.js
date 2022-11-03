@@ -135,7 +135,7 @@ function genarateMasonryGrid(columns, posts) {
     column.classList.add("column1");
     columnPosts.forEach((post) => {
       column.innerHTML += `
-      <div class="post1">
+      <a href="http://localhost:8000/auth/HomePage/DetailPage" class="post1">
         <div class="overlay1">
           <!-- header -->
           <div class="overlay-header">
@@ -150,7 +150,7 @@ function genarateMasonryGrid(columns, posts) {
           src="${post.image}"
           alt=""
         />
-      </div>
+      </a>
   
       <!-- title-avatar -->
       <p class="title-img">${post.title}</p>
@@ -163,7 +163,7 @@ function genarateMasonryGrid(columns, posts) {
         />
         <h6 class="name_main">Ten Tai Khoan</h6>
       </div>
-    </div>`;
+    </a>`;
     });
     container1.appendChild(column);
   }

@@ -1,6 +1,6 @@
 const baseApi = "http://127.0.0.1:8000/";
-const tbody = document.getElementById("tbody");//dung de hien thi thong tin tu db ra trnag blogs
-let ul = document.querySelector(".pagination");//chuyen trang
+const tbody = document.getElementById("tbody"); //dung de hien thi thong tin tu db ra trnag blogs
+let ul = document.querySelector(".pagination"); //chuyen trang
 
 const showMessage = (status, message) => {
   let messageContainer = document.getElementsByClassName("message")[0];
@@ -40,6 +40,7 @@ tbody.addEventListener("click", (e) => {
 
     // GET current row (Lấy ra dòng hiện tại của nút update)
     let td = e.target.parentElement.parentElement;
+    console.log(td);
 
     // GET current row children
     // Lấy toàn bộ phần tử con (td list) của dòng hiện tại
@@ -49,28 +50,37 @@ tbody.addEventListener("click", (e) => {
     let info = {
       index: tdChildList[0].innerHTML,
       id: tdChildList[1].innerHTML,
-      name: tdChildList[2].innerHTML,
-      username: tdChildList[3].innerHTML,
-      email: tdChildList[4].innerHTML,
-      website: tdChildList[5].innerHTML,
-      phone: tdChildList[6].innerHTML,
-      password: tdChildList[7].innerHTML,
+      email: tdChildList[2].innerHTML,
+      password: tdChildList[3].innerHTML,
+      age: tdChildList[4].innerHTML,
+      fullname: tdChildList[5].innerHTML,
+      avatar: tdChildList[6].innerHTML,
+      dob: tdChildList[7].innerHTML,
+      website: tdChildList[8].innerHTML,
+      username: tdChildList[8].innerHTML,
+      role: tdChildList[9].innerHTML,
     };
 
     // Fill toàn bộ thông tin lấy được ở trên vào template dòng mới
     // đã được thay thế bằng input.value
     td.innerHTML = `
-    <tr>
-        <th scope="row">
+    <tr style="width:100%">
+        <td scope="row">
             ${info.index}
-        </th>
+        </td>
         <td>${info.id}</td>
-        <td><input type="text" value="${info.name}"></td>
-        <td><input type="text" value="${info.username}"></td>
         <td>${info.email}</td>
+        <td>${info.password}</td>
+        <td class="password">${info.age}</td>
+        <td><input type="text" value="${info.fullname}"></td>
+        <td><input type="text" value="${info.avatar}"></td>
+        <td>${info.dob}</td>
+       
         <td><input type="text" value="${info.website}"></td>
-        <td><input type="text" value="${info.phone}"></td>
-        <td class="password">${info.password}</td>
+        <td>${info.username}</td>
+        <td><input type="text" value="${info.role}"></td>
+       
+       
         <td class="action">
             <span id="${info.id}" class="btn-delete btn btn-danger">
                 <ion-icon name="trash-outline"></ion-icon>
@@ -89,10 +99,12 @@ tbody.addEventListener("click", (e) => {
 
     // GET current row (Lấy ra dòng hiện tại của nút update)
     let td = e.target.parentElement.parentElement;
+    console.log(td);
 
     // GET current row children
     // Lấy toàn bộ phần tử con (td list) của dòng hiện tại
     let tdChildList = e.target.parentElement.parentElement.children;
+    console.log(tdChildList);
 
     let info = {
       index: tdChildList[0].innerHTML,
@@ -153,7 +165,6 @@ tbody.addEventListener("click", (e) => {
   }
 });
 let logout = document.querySelector(".sign-out");
-
 
 window.onload = function () {
   const urlSearchParams = new URLSearchParams(window.location.search);
