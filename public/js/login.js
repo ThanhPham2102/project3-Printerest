@@ -8,8 +8,8 @@ const singupButton = document.getElementById("btn_signUp");
 const containerx = document.getElementById("containerx");
 const formlogup = document.getElementById("logup-form");
 
-const errPass = document.getElementById("errPass");
-const errEmail = document.getElementById("errEmail");
+// const errPass = document.getElementById("errPass");
+// const errEmail = document.getElementById("errEmail");
 
 singupButton.addEventListener("click", () => {
   containerx.classList.add("right-panel-active");

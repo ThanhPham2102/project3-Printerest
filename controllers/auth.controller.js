@@ -173,11 +173,11 @@ module.exports.register = (req, res) => {
       if (rows.length > 0) {
         return Promise.reject("User already exists");
       } else {
-        return db.execute("INSERT INTO tbl_userpint VALUES(?, ?, ?)", [
-          email,
-          password,
-          age,
-        ]);
+        let id = Math.floor(Math.random() * 1000000);
+        return db.execute(
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [id, email, password, age, null, null, null, null, null, null]
+        );
       }
     })
     .then((data) => {
@@ -226,16 +226,13 @@ module.exports.signupregister = (req, res) => {
       // một mảng chứa 1 phần tử nếu tìm thấy user
       // [] nếu không tìm thấy
       if (rows.length > 0) {
-        res.status(200).json({
-          status: "useralrea",
-          message: " User already exists",
-        });
+        return Promise.reject("User already exists");
       } else {
-        return db.execute("INSERT INTO tbl_userpint VALUES(?, ?, ?)", [
-          email,
-          password,
-          age,
-        ]);
+        let id = Math.floor(Math.random() * 1000000);
+        return db.execute(
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [id, email, password, age, null, null, null, null, null, null]
+        );
       }
     })
     .then((data) => {
@@ -246,6 +243,9 @@ module.exports.signupregister = (req, res) => {
       });
     })
     .catch((err) => {
-      return res.status(500).json({ err: err });
+      return res.status(500).json({
+        status: "useralrea",
+        err: err,
+      });
     });
 };
