@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+  <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+
+  <title>Printerset</title>
+  <!-- modal -->
+  <!--  -->
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+
+<body>
+  <!-- navbar -->
+  <%- include('navbar'); -%>
+    <!-- container -->
+    <main style="margin-top:50px ; margin-left:30px;">
+      <div class="profilecontainer">
+        <div class="profile">
+          <a href="" class="profile_canhan">Hồ sơ công khai</a>
+          <a href="" class="profile_canhan">Thông tin cá nhân</a>
+          <a href="" class="profile_canhan">Quản lý tài khoản</a>
+          <a href="" class="profile_canhan">Điều chỉnh bảng tin nhà của bạn</a>
+          <a href="" class="profile_canhan">Tài khoản được xác nhận</a>
+          <a href="" class="profile_canhan">Quyền dùng mạng xã hội</a>
+          <a href="" class="profile_canhan">Thông báo</a>
+          <a href="" class="profile_canhan">Quyền riêng tư và dữ liệu</a>
+          <a href="" class="profile_canhan">Bảo mật và đăng nhập</a>
+          <a href="" class="profile_canhan">Nội dung mang thương hiệu</a>
+        </div>
+        <div class="profilemy" id="profilemy">
+          <h1>Hồ sơ công khai</h1>
+          <form id="form-profile">
+            <p>Người truy cập hồ sơ bạn sẽ thấy thông tin sau</p>
+            <p class="profile-title">Ảnh</p>
+            <div class="profile-img">
+              <div class="profile-imgmy">
+                <img src="http://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg"
+                  style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;" alt="">
+              </div>
+              <button class="profile-imgbutton">
+                <p class="profile-imgtitle"> Thay đổi</p>
+              </button>
+            </div>
+            <div class="profile-username">
+              <div class="profile-fistname">
+                <p class="profile-title">Tên</p>
+                <input class="profile-fistnameinput" name="fistname" type="text" value="<%= data.fistname %>"
+                  placeholder="Tên của bạn ">
+
+              </div>
+              <div class="profile-lastname">
+                <p class="profile-title">Họ</p>
+                <input class="profile-fistnameinput" name="lastname" type="text" value="<%= data.lastname %>"
+                  placeholder="Họ của bạn ">
+
+              </div>
+            </div>
+            <div class="profile-story">
+              <p class="profile-title">Giới thiệu</p>
+
+              <input class="profile-storyinput" name="dob" type="text" value="<%= data.dob %>"
+                placeholder="Kể câu chuyện của bạn">
+              </input>
+            </div>
+            <div class="profile-weblienket">
+              <p class="profile-title">Trang web</p>
+              <input class="profile-webinput" name="website" type="text" value="<%=data.website %>"
+                placeholder="Thêm đường liên kết để hướng lưu lượng vào website">
+
+              </input>
+            </div>
+            <div class="profile-usernamemy">
+              <p class="profile-title">Tên người dùng</p>
+              <input class="profile-webinput" name="username" type="text" value="<%=data.username %>"
+                placeholder="Tên người dùng">
+              </input>
+            </div>
+            <div class="profile-setting">
+              <!-- <button id="udpate-<%= data.id %>" class="profile-thietlap btn-update">Thiết lập lại</button> -->
+              <button class="profile-luu" id="btn-update">Lưu</button>
+            </div>
+            <div class="iduser">
+              <input type="text" style="display: none;" name="iduser" value="<%= data.id %>">
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/profile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="icon"
+    href="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg">
+  <title>trang ca nhan</title>
+  <!-- modal -->
+  <!--  -->
+  
+  <link rel="stylesheet" href="/css/persionalpageCreated.css">
+ 
+</head>
+
+<!-- navbar -->
+<%- include('navbar'); -%>
+  <!-- end-nabar -->
+
+  <!-- container -->
+
+  <main>
+    <div class="container1">
+      <div class="profile">
+        <div class="avatar-profile"><img class="img-profile"
+            src="https://i.pinimg.com/564x/71/29/4d/71294d3b5ab062e4e7b90e6232d8d10e.jpg" alt=""></div>
+        <div class="infor-profile">
+          <h1 class="name-profile">Dissappear Dissappear</h1>
+          <p class="name-link">@dissappear</p>
+          <p class="total-follow"> 1.000.000.000 lượt theo dõi</p>
+        </div>
+        <div class="share-change">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <!-- chiase -->
+            <li class="nav-item dropdown dropdown-all_share">
+
+              <a class="nav-link share-change__share" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Chia sẻ
+              </a>
+              <%- include('share'); -%>
+            </li>
+          </ul>
+          <a class="btn_change" href="http://localhost:8000/auth/HomePage/profile">
+            <div>
+              <div>Chỉnh sửa hồ sơ </div>
+            </div>
+          </a>
+
+        </div>
+        <div class="created-screen">
+          <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created">
+            <p >Đã tạo</p>
+            <div>
+
+            </div>
+          </a>
+          <a href="http://localhost:8000/auth/HomePage/PersionalPage" class="created1">
+            <p >Đã lưu</p>
+            <div>
+
+            </div>
+          </a>
+        </div>
+        <div class="created-screen Ghim-ytuong">
+            <h2> Truyền cảm hứng bằng một Ghim ý tưởng</h2>
+            
+        </div>
+        <div class="created-screen ">
+    
+            <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created created-color">
+              <p >Tạo</p>
+              <div>
+  
+              </div>
+            </a>
+        </div>
+        
+      </div>
+      
+    </div>
+   
+  </main>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
+
+    "></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+  <script src="/js/PersionalPage.js"></script>
+  </body>
+
+</html>

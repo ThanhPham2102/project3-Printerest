@@ -115,9 +115,9 @@ for (let i = 0; i < images.length; i++) {
 }
 // console.log(posts);
 
-const container1 = document.querySelector(".container1");
+const container4 = document.querySelector(".container4");
 function genarateMasonryGrid(columns, posts) {
-  container1.innerHTML = "";
+  container4.innerHTML = "";
   let columnWrappers = {};
   //creat column item array
   for (let i = 0; i < columns; i++) {
@@ -135,7 +135,7 @@ function genarateMasonryGrid(columns, posts) {
     column.classList.add("column1");
     columnPosts.forEach((post) => {
       column.innerHTML += `
-      <a href="http://localhost:8000/auth/HomePage/DetailPage" class="post1">
+      <div class="post1">
         <div class="overlay1">
           <!-- header -->
           <div class="overlay-header">
@@ -150,7 +150,7 @@ function genarateMasonryGrid(columns, posts) {
           src="${post.image}"
           alt=""
         />
-      </a>
+      </div>
   
       <!-- title-avatar -->
       <p class="title-img">${post.title}</p>
@@ -163,9 +163,9 @@ function genarateMasonryGrid(columns, posts) {
         />
         <h6 class="name_main">Ten Tai Khoan</h6>
       </div>
-    </a>`;
+    </div>`;
     });
-    container1.appendChild(column);
+    container4.appendChild(column);
   }
 }
 
