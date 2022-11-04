@@ -117,3 +117,20 @@ module.exports.DeleteUser = (req, res) => {
 };
 
 //useblog
+module.exports.profileUpdateUser = (req, res) => {
+  let { id } = req.params;
+  console.log(id);
+  let { age, fistname, lastname, avatar, dob, website, username, role } =
+    req.body;
+  db.execute(
+    "UPDATE tbl_userpint SET age =?, fistname =?,lastname =?, avatar =?,dob =?,website =?,username =?,role =? WHERE id=?",
+    [age, fistname, lastname, avatar, dob, website, username, role, id]
+  )
+    .then((data) => {
+      //   console.log(data);
+      res.status(200).json({
+        message: "update one successfully",
+      });
+    })
+    .catch((err) => console.log(err));
+};

@@ -16,9 +16,9 @@ module.exports.resetpass = (req, res) => {
   res.render("passwordreset.ejs");
 };
 
-module.exports.persionalpage = (req, res) => {
-  res.render("PersionalPage.ejs");
-};
+// module.exports.persionalpage = (req, res) => {
+//   res.render("PersionalPage.ejs");
+// };
 module.exports.persionalpagecreated = (req, res) => {
   res.render("PersionalPageCreadted.ejs");
 };
@@ -26,12 +26,31 @@ module.exports.DetailPage = (req, res) => {
   res.render("DetailPage.ejs");
 };
 
-module.exports.profile = (req, res) => {
-  res.render("profile.ejs");
-};
+// module.exports.getprofile = (req, res) => {
+//   res.render("profile.ejs");
+// };
+// module.exports.homepage = (req, res) => {
+//   res.render("HomePage.ejs");
+// };
 module.exports.homepage = (req, res) => {
-  res.render("HomePage.ejs");
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      console.log(rows);
+      res.render("HomePage", {
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
 };
+// module.exports.homepage = (req, res) => {
+//   let id = req.params.id;
+//   db.execute("SELECT * FROM tbl_users WHERE id =?", [id]).then((data) => {
+//     let [rows] = data;
+//     res.render("HomePage.ejs", { data: rows[0] });
+//   });
+// };
 // module.exports.register = (req, res) => {
 //   let { email, password } = req.body;
 //   if (email) {
@@ -145,11 +164,11 @@ Token(jwt)
 */
 
 module.exports.register = (req, res) => {
-  let { email, password, age } = req.body;
+  let { email, password, age, username, role } = req.body;
 
-  if (!email || !password || !age) {
+  if (!email || !password || !age || !username || !role) {
     return res.status(500).json({
-      messages: "Invalid email or password end age",
+      messages: "Invalid email, password, age and username",
     });
   }
 
@@ -179,8 +198,20 @@ module.exports.register = (req, res) => {
       } else {
         let id = Math.floor(Math.random() * 1000000);
         return db.execute(
-          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, email, password, age, null, null, null, null, null, null]
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [
+            id,
+            email,
+            password,
+            age,
+            null,
+            null,
+            null,
+            null,
+            null,
+            username,
+            role,
+          ]
         );
       }
     })
@@ -200,11 +231,11 @@ module.exports.register = (req, res) => {
 };
 
 module.exports.signupregister = (req, res) => {
-  let { email, password, age } = req.body;
+  let { email, password, age, username, role } = req.body;
 
-  if (!email || !password || !age) {
+  if (!email || !password || !age || !username || !role) {
     return res.status(500).json({
-      messages: "Invalid email or password end age",
+      messages: "Invalid email, password , age and username",
     });
   }
 
@@ -234,8 +265,20 @@ module.exports.signupregister = (req, res) => {
       } else {
         let id = Math.floor(Math.random() * 1000000);
         return db.execute(
-          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, email, password, age, null, null, null, null, null, null]
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [
+            id,
+            email,
+            password,
+            age,
+            null,
+            null,
+            null,
+            null,
+            null,
+            username,
+            role,
+          ]
         );
       }
     })
@@ -252,4 +295,44 @@ module.exports.signupregister = (req, res) => {
         err: err,
       });
     });
+};
+
+module.exports.getprofile = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      res.render("profile", {
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
+};
+module.exports.getPer = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      res.render("PersionalPage", {
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
+};
+module.exports.profileUpdate = (req, res) => {
+  let { id } = req.params;
+
+  let { fistname, lastname, dob, website, username } = req.body;
+  db.execute(
+    "UPDATE tbl_userpint SET fistname =?,lastname =?,dob =?,website =?,username =? WHERE id=?",
+    [fistname, lastname, dob, website, username, id]
+  )
+    .then((data) => {
+      //   console.log(data);
+      res.status(200).json({
+        status: "updatesuccess",
+        message: "update successfully",
+      });
+    })
+    .catch((err) => console.log(err));
 };

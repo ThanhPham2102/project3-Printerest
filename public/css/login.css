@@ -33,7 +33,8 @@
 }
 #userEmail,
 #password,
-#userAge {
+#userAge,
+#username {
   margin: auto;
   height: 50px;
   width: 60%;

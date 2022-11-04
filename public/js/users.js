@@ -52,13 +52,14 @@ tbody.addEventListener("click", (e) => {
       id: tdChildList[1].innerHTML,
       email: tdChildList[2].innerHTML,
       password: tdChildList[3].innerHTML,
-      age: tdChildList[4].innerHTML,
-      fullname: tdChildList[5].innerHTML,
-      avatar: tdChildList[6].innerHTML,
-      dob: tdChildList[7].innerHTML,
-      website: tdChildList[8].innerHTML,
-      username: tdChildList[8].innerHTML,
-      role: tdChildList[9].innerHTML,
+      age: tdChildList[4].innerHTML.trim(),
+      fistname: tdChildList[5].innerHTML.trim(),
+      lastname: tdChildList[6].innerHTML.trim(),
+      avatar: tdChildList[7].innerHTML.trim(),
+      dob: tdChildList[8].innerHTML.trim(),
+      website: tdChildList[9].innerHTML.trim(),
+      username: tdChildList[10].innerHTML.trim(),
+      role: tdChildList[11].innerHTML.trim(),
     };
 
     // Fill toàn bộ thông tin lấy được ở trên vào template dòng mới
@@ -70,14 +71,14 @@ tbody.addEventListener("click", (e) => {
         </td>
         <td>${info.id}</td>
         <td>${info.email}</td>
-        <td>${info.password}</td>
-        <td class="password">${info.age}</td>
-        <td><input type="text" value="${info.fullname}"></td>
+        <td class="password">${info.password}</td>
+        <td><input type="text" value="${info.age}"></td>
+        <td><input type="text" value="${info.fistname}"></td>
+        <td><input type="text" value="${info.lastname}"></td>
         <td><input type="text" value="${info.avatar}"></td>
-        <td>${info.dob}</td>
-       
+        <td><input type="text" value="${info.dob}"></td>
         <td><input type="text" value="${info.website}"></td>
-        <td>${info.username}</td>
+        <td><input type="text" value="${info.username}"></td>
         <td><input type="text" value="${info.role}"></td>
        
        
@@ -107,19 +108,21 @@ tbody.addEventListener("click", (e) => {
     console.log(tdChildList);
 
     let info = {
-      index: tdChildList[0].innerHTML,
       id: tdChildList[1].innerHTML,
-      name: tdChildList[2].children[0].value,
-      username: tdChildList[3].children[0].value,
-      email: tdChildList[4].innerHTML,
-      website: tdChildList[5].children[0].value,
-      phone: tdChildList[6].children[0].value,
-      password: tdChildList[7].innerHTML,
+      email: tdChildList[2].innerHTML,
+      password: tdChildList[3].innerHTML,
+      age: tdChildList[4].children[0].value,
+      fistname: tdChildList[5].children[0].value,
+      lastname: tdChildList[6].children[0].value,
+      avatar: tdChildList[7].children[0].value,
+      dob: tdChildList[8].children[0].value,
+      website: tdChildList[9].children[0].value,
+      username: tdChildList[10].children[0].value,
+      role: tdChildList[11].children[0].value,
     };
     // .innerHTML ---> text (input) "<input />"
 
     // .children ---> 1 mảng HTML, [0] --> .value
-    console.log(info.website, info.phone);
 
     // Tiến hành gọi fetch update
     fetch(baseApi + `users/${id}`, {
@@ -141,12 +144,16 @@ tbody.addEventListener("click", (e) => {
                 ${info.index}
             </th>
             <td>${info.id}</td>
-            <td>${info.name}</td>
-            <td>${info.username}</td>
             <td>${info.email}</td>
-            <td>${info.website}</td>
-            <td>${info.phone}</td>
             <td class="password">${info.password}</td>
+            <td>${info.age}</td>
+            <td>${info.fistname}</td>
+            <td>${info.lastname}</td>
+            <td>${info.avatar}</td>
+            <td>${info.dob}</td>
+            <td>${info.website}</td>
+            <td>${info.username}</td>
+            <td>${info.role}</td>
             <td class="action">
                 <span id="${info.id}" class="btn-delete btn btn-danger">
                     <ion-icon name="trash-outline"></ion-icon>
@@ -174,5 +181,5 @@ window.onload = function () {
   pages = Array.from(pages);
   pages.pop();
   pages.shift();
-  pages[activePage - 1].classList.add("active");
+  // pages[activePage - 1].classList.add("active");
 };
