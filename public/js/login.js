@@ -135,6 +135,7 @@ formlogup.addEventListener("submit", (e) => {
           },
         });
       }
+      console.log(data);
       if (data.status === "useralrea") {
         console.log("fuckyou");
         Swal.fire({

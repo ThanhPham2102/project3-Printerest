@@ -35,7 +35,7 @@
             <!-- img -->
             <div class="box-1 mt-md-0 mt-5">
               <img
-                src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                src="<%= data[0].img_url %>"
                 class="" alt="" />
             </div>
 
@@ -290,10 +290,11 @@
                 </div>
                 <!--  -->
               </div>
-              <!-- end header- tranr chi tiet -->
+              <!-- end header- tranr chi tiet//nên thêm ghi chú cho hình ảnh -->
+              
               <div class="mt-5">
-                <p class="mb-1 h-1">Collections.</p>
-                <p class="">Mùa hoa anh đào và tôi mất em, đó là một ngày chiều tháng 7,một ngày mưa phùn cùng những giọt nước mắt</p>
+                <p class="mb-1 h-1"><%= data[0].photo_name %></p>
+                <p class=""><%= data[0].content %></p>
                 <p class="text-muted mb-2">
                   <!-- profile -->
                 <div style="margin-left: 6px">
@@ -301,13 +302,13 @@
                     <div style="display: flex">
                       <div class="avatar">
                         <img class="img-avatar"
-                          src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                          src="<%= dataUser.avatar %>"
                           alt="" />
                       </div>
                       <div>
                         <div class="account-name">
-                          <h6>Dissappear Dissappear</h6>
-                          <div>Cá nhân</div>
+                          <h6 style="font-size: 20px;margin-top:10px"><%= dataUser.user_name %></h6>
+                          <!-- <div>Cá nhân</div> -->
                           <div style="font-size: 13px; color:#5e5d5d;">Cả thế giới theo dõi</div>
                         </div>
                       </div>
@@ -330,6 +331,7 @@
 
                 </div>
               </div>
+            
               <div class="mt-auto">
                 <p class="footer text-muted mb-0 mt-md-0 mt-4">
                   By register you agree with our

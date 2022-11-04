@@ -15,7 +15,7 @@ const showMessageBlogs = (startus, message) => {
 };
 
 tbodyBlogs.addEventListener("click", (e) => {
-  console.log("hahaha");
+  
   if (e.target.classList.contains("btn-delete-blogs")) {
     let id = e.target.id;
     fetch(blogsApi + `blogs/${id}`, {

@@ -9,7 +9,7 @@ router.get("/signup", authController.renderRegister);
 router.get("/HomePage", authController.homepage);
 router.get("/HomePage/PersionalPage", authController.persionalpage);
 router.get("/HomePage/PersionalPageCreated", authController.persionalpagecreated);
-router.get("/HomePage/DetailPage", authController.DetailPage);
+router.get("/HomePage/DetailPage/:id", authController.DetailPage);
 router.get("/HomePage/profile", authController.profile);
 //đẩy dữ liệu lên
 router.post("/signup", authController.register);

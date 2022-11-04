@@ -10,7 +10,7 @@ router.get(
   // requireAdmin,
   userController.getAll
 ); //admin
-// Get one by id
+// Get one by id(load ra thông tin từng thằng theo id)
 router.get("/:id", userController.getOne);
 //in ra userblog
 // router.get("/:id/photo", blogController.getBlogsByUserId);
