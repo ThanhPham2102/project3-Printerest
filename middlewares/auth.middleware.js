@@ -27,3 +27,12 @@ module.exports.requireHome = (req, res, next) => {
     next();
   }
 };
+module.exports.requirePer = (req, res, next) => {
+  console.log(req.signedCookies.role);
+  console.log(req.signedCookies.email);
+  if (req.signedCookies.role === "user") {
+    res.redirect(`HomePage/PersionalPage/${req.signedCookies.email}`);
+  } else {
+    next();
+  }
+};

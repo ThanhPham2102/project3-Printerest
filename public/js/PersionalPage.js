@@ -135,3 +135,12 @@ window.onload = function () {
 //     })
 //     .catch((err) => console.log(err));
 // };
+
+const clickPer = document.getElementById("id-profile");
+
+clickPer.onclick = (e) => {
+  e.preventDefault();
+  console.log(window.location.href.split("/"));
+  let id = window.location.href.split("/")[6];
+  window.location.href = `/auth/HomePage/profile/${id}`;
+};

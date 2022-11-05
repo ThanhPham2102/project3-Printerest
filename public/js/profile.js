@@ -43,3 +43,21 @@ formupdate.addEventListener("submit", (e) => {
       console.log(err);
     });
 });
+
+const clickPer = document.getElementById("click-pers");
+
+clickPer.onclick = (e) => {
+  e.preventDefault();
+  console.log(window.location.href.split("/"));
+  let id = window.location.href.split("/")[6];
+  window.location.href = `/auth/HomePage/PersionalPage/${id}`;
+};
+
+// const clickPer = document.getElementById("click-per2");
+
+// clickPer.onclick = (e) => {
+//   e.preventDefault();
+//   console.log(window.location.href.split("/"));
+//   let id = window.location.href.split("/")[6];
+//   window.location.href = `/auth/HomePage/PersionalPage/${id}`;
+// };

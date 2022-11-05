@@ -6,7 +6,6 @@ window.onload = function () {
   fetch(baseApi + "blogs/photos")
     .then((res) => res.json())
     .then((data) => {
- 
       let array = data.data;
       let images = [];
       for (let i = 0; i < array.length; i++) {
@@ -116,4 +115,13 @@ window.onload = function () {
     .catch((err) => {
       console.log(err);
     });
+};
+
+const clickPer = document.getElementById("click-per");
+
+clickPer.onclick = (e) => {
+  e.preventDefault();
+  console.log(window.location.href.split("/"));
+  let id = window.location.href.split("/")[5];
+  window.location.href = `/auth/HomePage/PersionalPage/${id}`;
 };

@@ -1,66 +1,34 @@
 <nav class="navbar navbar-expand-lg bg-light header_nav">
   <div class="container-fluid">
-    <a
-      class="navbar-brand"
-      href="http://localhost:8000/auth/HomePage"
-      style="display: flex"
-    >
-      <img
-        class="imgPint"
+    <a class="navbar-brand" href="http://localhost:8000/auth/HomePage" style="display: flex">
+      <img class="imgPint"
         src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
-        alt="http://localhost:8000/auth/"
-      />
+        alt="http://localhost:8000/auth/" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" style="margin-right: 30px">
-          <a
-            class="nav-link trangchu"
-            aria-current="page"
-            href="http://localhost:8000/auth/HomePage"
-          >
+          <a class="nav-link trangchu" aria-current="page" href="http://localhost:8000/auth/HomePage">
             <h6>Trang chủ</h6>
           </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle navbar-tao"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <a class="nav-link dropdown-toggle navbar-tao" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Tạo
           </a>
           <ul class="dropdown-menu dropdown_menu_tao">
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
-                Tạo Ghim ý Tưởng</a
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                Tạo Ghim ý Tưởng</a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-                >Tạo Ghim</a
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">Tạo Ghim</a>
             </li>
           </ul>
         </li>
@@ -69,184 +37,116 @@
           <form class="d-flex" role="search">
             <div>
               <!-- <ion-icon class="icon_search"name="search"></ion-icon> -->
-              <input
-                class="form-control me-2 search_input"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
+              <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search" />
             </div>
           </form>
         </li>
 
         <li class="nav-item icon-navbar icon_navbar icon-navbar_thongbao">
           <a class="nav-link active" aria-current="page" href="#">
-            <ion-icon
-              name="notifications-outline"
-              class="fontsize-navbar"
-            ></ion-icon>
+            <ion-icon name="notifications-outline" class="fontsize-navbar"></ion-icon>
             <!-- Thông báo -->
           </a>
           <div class="thongbao">Thông báo</div>
         </li>
         <li class="nav-item icon-navbar icon_navbar icon-navbar_tinnhan">
           <a class="nav-link" href="#">
-            <ion-icon
-              class="fontsize-navbar"
-              name="chatbubble-ellipses-outline"
-            ></ion-icon>
+            <ion-icon class="fontsize-navbar" name="chatbubble-ellipses-outline"></ion-icon>
             <!-- Tin nhắn -->
           </a>
           <div class="tinnhan">Tin nhắn</div>
         </li>
-        <li class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="http://localhost:8000/auth/HomePage/PersionalPage"
-            >D</a
-          >
+        <li id="click-per" class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
+          <a class="nav-link active" aria-current="page" href="#">D</a>
           <div class="hoso">Hồ sơ của bạn</div>
         </li>
 
         <li class="nav-item dropdown all">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <!-- tài khoản và các tuỳ chọn khác -->
           </a>
 
-          <ul
-            style="border-radius: 16px; width: 360px; left: -300px"
-            class="dropdown-menu"
-          >
+          <ul style="border-radius: 16px; width: 360px; left: -300px" class="dropdown-menu">
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                id="click-profile"
-                href="http://localhost:8000/auth/HomePage/PersionalPage"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" id="click-per" href="#">
                 <div style="display: flex">
                   <div class="avatar">
-<<<<<<< HEAD
-                    <img class="img-avatar" src="<%=data.avatar %>" alt="" />
-=======
                     <img class="img-avatar" src="<%=data.avatar%>" alt="" />
->>>>>>> feat/phong
                   </div>
                   <div>
                     <div class="account-name">
-                      <h6><%=data.fistname%> <%=data.lastname%></h6>
+                      <h6>
+                        <%=data.fistname%>
+                          <%=data.lastname%>
+                      </h6>
                       <div>Cá nhân</div>
-                      <div><%= data.email %></div>
+                      <div>
+                        <%= data.email %>
+                      </div>
                     </div>
                   </div>
                 </div>
               </a>
             </li>
-            <li
-              style="
+            <li style="
                 margin-left: 6px;
                 font-size: 12px;
                 margin-left: 22px;
                 margin-top: 20px;
-              "
-            >
+              ">
               Tài khoản của bạn
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Thêm tài khoản</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Chuyển đổi thành tài khoản doanh nghiệp</h6>
               </a>
             </li>
-            <li
-              style="
+            <li style="
                 margin-left: 6px;
                 font-size: 12px;
                 margin-left: 22px;
                 margin-top: 20px;
-              "
-            >
+              ">
               Tuỳ chọn khác
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="http://localhost:8000/auth/HomePage/profile"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item"
+                href="http://localhost:8000/auth/HomePage/profile">
                 <h6>Cài đặt</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Điều chỉnh bảng tin nhà của bạn</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Cài đặt ứng dụng Chrome</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Quyền riêng tư của bạn</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Nhận trợ giúp</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="#"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
                 <h6>Xem điều khoản và quyền riêng tư</h6>
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a
-                style="border-radius: 8px; width: 98%"
-                class="dropdown-item"
-                href="http://localhost:8000/auth"
-              >
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="http://localhost:8000/auth">
                 <h6>Đăng xuất</h6>
               </a>
             </li>

@@ -287,6 +287,7 @@ module.exports.getprofile = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
 module.exports.getPer = (req, res) => {
   let id = req.params.id; //lấy id từ param
   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
@@ -299,6 +300,7 @@ module.exports.getPer = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
 module.exports.profileUpdate = (req, res) => {
   let { id } = req.params;
 
