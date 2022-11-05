@@ -15,6 +15,9 @@ router.get(
 );
 router.get("/HomePage/DetailPage", authController.DetailPage);
 // router.get("/HomePage/profile", authController.profile);
+
+
+
 //đẩy dữ liệu lên
 router.post("/signup", authController.register);
 router.post("/login", authController.login);
