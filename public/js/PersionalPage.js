@@ -3,21 +3,14 @@ window.onload = function () {
 
   let posts = [];
 
-  fetch(baseApi + "blogs/photos")
+  fetch(baseApi + "blogs/photos/")
     .then((res) => res.json())
     .then((data) => {
-      // (req, res) => {
-      //   let id = req.params.id;
-      //   console.log(id);
-      // };
-      // console.log(data);
       let array = data.data;
       let images = [];
       for (let i = 0; i < array.length; i++) {
         images.push(array[i].img_url);
       }
-      // console.log(images);
-      // Thuc hien render toan bo anh o trong .then() nay
       let imageIndex = 0;
       for (let i = 0; i < images.length; i++) {
         let item = {
@@ -28,7 +21,7 @@ window.onload = function () {
           user_name: array[i].username,
           avatar: array[i].avatar,
         };
-        posts.push(item);
+
         imageIndex++;
         if (imageIndex > images.length - 1) imageIndex = 0;
       }
