@@ -7,11 +7,12 @@ let strongRegex = new RegExp(
 );
 
 // show toan bo hinh anh ra:
+// admin
 module.exports.getAllBlogs = (req, res) => {
   let { page_size_blogs, page_index_blogs } = req.query;
-  console.log(page_size_blogs, page_index_blogs);
+  // console.log(page_size_blogs, page_index_blogs);
   page_index_blogs = Number(page_index_blogs) || 1;
-  page_size_blogs = Number(page_size_blogs) || 5;
+  page_size_blogs = Number(page_size_blogs) || 10;
   let total = 0;
   db.execute(`SELECT*FROM tbl_photopint`)
     .then((data) => {
@@ -23,7 +24,7 @@ module.exports.getAllBlogs = (req, res) => {
     .then((data) => {
       //   console.log(data);
       let [rows, cols] = data;
-      console.log(rows);
+      // console.log(rows);
       res.render("photoPinterest", {
         rows,
         total,
@@ -33,13 +34,43 @@ module.exports.getAllBlogs = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+// trang user
+//show toan bo anh nguoidung ra
+module.exports.getAllPhotos = (req, res) => {
+  db.execute(
+    `
+  SELECT a.*, b.email,b.username,b.avatar
+  FROM 
+  tbl_photopint AS a,
+  tbl_userpint AS b
+  WHERE a.user_id = b.id;`
+  )
+    .then((data) => {
+      let [rows, cols] = data;
+      res.status(200).json({
+        data: rows,
+      });
+    })
+    .catch((err) => console.log(err));
+};
 
 module.exports.getOneBlogs = (req, res) => {
-  console.log("getOneBlogs");
   let userId = req.params.id;
-  db.execute("SELECT * FROM tbl_photopint WHERE id =?", [userId]) //so sánh với id trong db
+
+  db.execute("SELECT * FROM tbl_photopint WHERE user_id =?", [userId]) //so sánh với id trong db
     .then((data) => {
-      // console.log(data);
+      
+      let [rows] = data;
+      res.status(200).json({
+        data: rows, //show ra toan bo anh co chua user_id giong nhau la mot mang
+      });
+    })
+    .catch((err) => console.log(err));
+};
+module.exports.getOnePhoto = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_photopint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
       let [rows] = data;
       res.status(200).json({
         data: rows[0],
@@ -47,10 +78,9 @@ module.exports.getOneBlogs = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
-
 //CreatBlogs
 module.exports.creatBlogs = (req, res) => {
-  console.log("creatBlogs");
+ 
   let { title, content } = req.body;
   let { userId } = req.params;
   // let { title, password\\\ } = req.body;//lấy email và password vào để kiểm tra
@@ -62,7 +92,7 @@ module.exports.creatBlogs = (req, res) => {
   }
 
   let id = Math.floor(Math.random() * 1000);
-  db.execute("INSERT INTO  tbl_userpint VALUES(?,?,?,?,?)", [
+  db.execute("INSERT INTO  tbl_photopint VALUES(?,?,?,?,?)", [
     id,
     title,
     content,
@@ -84,7 +114,7 @@ module.exports.creatBlogs = (req, res) => {
 
 //update blogs
 module.exports.updateBlogs = (req, res) => {
-  console.log("updateBlogs");
+  
   let { id } = req.params;
   let { title, content, img } = req.body;
   db.execute("UPDATE tbl_photopint SET title = ?,content =?,img=? WHERE id=?", [
@@ -94,7 +124,7 @@ module.exports.updateBlogs = (req, res) => {
     id,
   ])
     .then((data) => {
-      //   console.log(data);
+     
       res.status(200).json({
         message: "update one successfully",
       });
@@ -121,7 +151,7 @@ module.exports.getBlogsByUserId = (req, res) => {
     .then((data) => {
       let [rows] = data;
       let renderData = _.chunk(rows, 3);
-      console.log(rows);
+    
       res.render("PersionalPage.ejs", {
         data: renderData,
       });

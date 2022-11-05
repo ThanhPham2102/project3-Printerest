@@ -16,22 +16,44 @@ module.exports.resetpass = (req, res) => {
   res.render("passwordreset.ejs");
 };
 
-// module.exports.persionalpage = (req, res) => {
-//   res.render("PersionalPage.ejs");
-// };
 module.exports.persionalpagecreated = (req, res) => {
   res.render("PersionalPageCreadted.ejs");
 };
+
+//DetailPage
 module.exports.DetailPage = (req, res) => {
-  res.render("DetailPage.ejs");
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_photopint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      let userIdPhoto = data[0][0].user_id;
+      db.execute("SELECT * FROM tbl_userpint WHERE id =?", [userIdPhoto]).then(
+        (data) => {
+          // console.log(data[0][0].avatar);
+          let dataUser = data[0][0];
+          // console.log("hahah", dataUser);//bug avatar thay
+          res.render("DetailPage", {
+            data: rows,
+            dataUser,
+          });
+        }
+      );
+    })
+    .catch((err) => console.log(err));
+};
+module.exports.getOne = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      // console.log(data);
+      let [rows] = data;
+      res.status(200).json({
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
-// module.exports.getprofile = (req, res) => {
-//   res.render("profile.ejs");
-// };
-// module.exports.homepage = (req, res) => {
-//   res.render("HomePage.ejs");
-// };
 module.exports.homepage = (req, res) => {
   let id = req.params.id; //lấy id từ param
   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
@@ -44,22 +66,6 @@ module.exports.homepage = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
-// module.exports.homepage = (req, res) => {
-//   let id = req.params.id;
-//   db.execute("SELECT * FROM tbl_users WHERE id =?", [id]).then((data) => {
-//     let [rows] = data;
-//     res.render("HomePage.ejs", { data: rows[0] });
-//   });
-// };
-// module.exports.register = (req, res) => {
-//   let { email, password } = req.body;
-//   if (email) {
-//     return res
-//       .status(500)
-//       .json({ message: "Please enter a valid email addresses" });
-//   } else {
-//   }
-// };
 module.exports.login = (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
@@ -116,14 +122,9 @@ module.exports.loginresetpass = (req, res) => {
         // console.log("not file");
         res.status(404).json({ status: "erruser", message: "User not found" });
       } else {
-        // console.log("file");
-        // console.log("file");
-        // console.log("file");
         let passvalidate = bcrypt.compareSync(password, find.password);
-        // const passvalidate = find.password;
-        // console.log(passvalidate);
+
         if (!passvalidate) {
-          // console.log("hello from passs invalid");
           res
             .status(404)
             .json({ status: "errpass", message: "Wrong password" });
@@ -135,33 +136,11 @@ module.exports.loginresetpass = (req, res) => {
             status: "success",
             message: "login successful",
           });
-          //dieu huong ng dung sang trang
-          //set heaers
-          //res.redirect //not working after set cookie
-          //res. redirect not working after res.cookie(google)
         }
       }
     }
   );
 };
-
-// module.exports.logout = (req, res) => {
-//   // clear cookie ( tra res.clearCookie())
-
-//   res.clearCookie("userId", {
-//     signed: true,
-//     path: "/",
-//     domain: "localhost",
-//   });
-//   // Logout successfully (JSON)
-//   // Front-end take message and redirect
-// };
-//authentication(xac thuc)
-/*
-Session(phien dang nhap)
-cookies
-Token(jwt)
-*/
 
 module.exports.register = (req, res) => {
   let { email, password, age, username, role } = req.body;
@@ -313,6 +292,7 @@ module.exports.getPer = (req, res) => {
   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
       let [rows] = data;
+      // console.log(rows[0]);
       res.render("PersionalPage", {
         data: rows[0],
       });

@@ -1,14 +1,7 @@
 const baseApi = `http://localhost:8000/`;
 const formupdate = document.getElementById("form-profile");
-
 const updateButton = document.getElementById("btn-update");
 const container = document.getElementById("profilemy");
-
-// updateButton.addEventListener("submit", () => {
-//   container.classList.add("right-panel-active");
-// });
-
-// console.log(tbody);
 formupdate.addEventListener("submit", (e) => {
   e.preventDefault();
   let fistname = formupdate.fistname.value;

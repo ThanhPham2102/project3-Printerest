@@ -16,6 +16,7 @@ const showMessage = (status, message) => {
 };
 
 tbody.addEventListener("click", (e) => {
+  // xoá dữ liệu 
   if (e.target.classList.contains("btn-delete")) {
     let id = e.target.id;
     fetch(baseApi + `users/${id}`, {
@@ -27,26 +28,19 @@ tbody.addEventListener("click", (e) => {
       .then((data) => {
         showMessage("delete", data.message);
         e.target.parentElement.parentElement.remove();
-        console.log(data);
+       
       })
       .catch((err) => {
         showMessage("delete", err.message);
       });
   }
 
+// update dữ liệu
   if (e.target.classList.contains("btn-update")) {
-    // GET id
-    let id = e.target.id.split("-")[1]; // update-1, update-2...
-
-    // GET current row (Lấy ra dòng hiện tại của nút update)
+    let id = e.target.id.split("-")[1];
     let td = e.target.parentElement.parentElement;
     console.log(td);
-
-    // GET current row children
-    // Lấy toàn bộ phần tử con (td list) của dòng hiện tại
     let tdChildList = e.target.parentElement.parentElement.children;
-
-    // Lấy ra toàn bộ thông tin của user nằm trong từng ô (từng td)
     let info = {
       index: tdChildList[0].innerHTML,
       id: tdChildList[1].innerHTML,
@@ -61,9 +55,6 @@ tbody.addEventListener("click", (e) => {
       username: tdChildList[10].innerHTML.trim(),
       role: tdChildList[11].innerHTML.trim(),
     };
-
-    // Fill toàn bộ thông tin lấy được ở trên vào template dòng mới
-    // đã được thay thế bằng input.value
     td.innerHTML = `
     <tr style="width:100%">
         <td scope="row">
@@ -93,19 +84,14 @@ tbody.addEventListener("click", (e) => {
     </tr>
     `;
   }
-
+// SAVE dữ liệu
   if (e.target.classList.contains("btn-save")) {
-    // GET id
-    let id = e.target.id.split("-")[1]; // update-1, update-2...
-
-    // GET current row (Lấy ra dòng hiện tại của nút update)
+    
+    let id = e.target.id.split("-")[1];
     let td = e.target.parentElement.parentElement;
-    console.log(td);
-
-    // GET current row children
-    // Lấy toàn bộ phần tử con (td list) của dòng hiện tại
+ 
     let tdChildList = e.target.parentElement.parentElement.children;
-    console.log(tdChildList);
+  
 
     let info = {
       id: tdChildList[1].innerHTML,
@@ -134,7 +120,7 @@ tbody.addEventListener("click", (e) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+      
         showMessage("update", data.message);
         // DOM để đổi lại dòng hiện tại thành một dòng bình thường không có
         // input nằm ở bên trong nữa
@@ -183,3 +169,13 @@ window.onload = function () {
   pages.shift();
   // pages[activePage - 1].classList.add("active");
 };
+
+
+
+
+
+
+
+
+
+
