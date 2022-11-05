@@ -18,12 +18,12 @@ module.exports.notRequireAuth = (req, res, next) => {
   }
 };
 
-// module.exports.requireAdmin = (req, res, next) => {
-//   // console.log(req.signedCookies.role);
-//   // console.log(req.signedCookies.userId);
-//   if (req.signedCookies.role === "user") {
-//     res.redirect(`/users/${req.signedCookies.userId}/blogs`);
-//   } else {
-//     next();
-//   }
-// };
+module.exports.requireHome = (req, res, next) => {
+  console.log(req.signedCookies.role);
+  console.log(req.signedCookies.email);
+  if (req.signedCookies.role === "user") {
+    res.redirect(`HomePage/${req.signedCookies.email}`);
+  } else {
+    next();
+  }
+};

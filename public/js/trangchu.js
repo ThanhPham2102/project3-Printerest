@@ -6,7 +6,7 @@ window.onload = function () {
   fetch(baseApi + "blogs/photos")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+ 
       let array = data.data;
       let images = [];
       for (let i = 0; i < array.length; i++) {
@@ -21,7 +21,7 @@ window.onload = function () {
           title: `${array[i].photo_name}`,
           image: images[imageIndex],
           user_id: array[i].user_id,
-          user_name: array[i].user_name,
+          user_name: array[i].username,
           avatar: array[i].avatar,
         };
         posts.push(item);

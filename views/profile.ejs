@@ -37,9 +37,9 @@
           <a href="" class="profile_canhan">Bảo mật và đăng nhập</a>
           <a href="" class="profile_canhan">Nội dung mang thương hiệu</a>
         </div>
-        <div class="profilemy">
+        <div class="profilemy" id="profilemy">
           <h1>Hồ sơ công khai</h1>
-          <form action="" id="form-profile">
+          <form id="form-profile">
             <p>Người truy cập hồ sơ bạn sẽ thấy thông tin sau</p>
             <p class="profile-title">Ảnh</p>
             <div class="profile-img">
@@ -54,32 +54,43 @@
             <div class="profile-username">
               <div class="profile-fistname">
                 <p class="profile-title">Tên</p>
-                <input class="profile-fistnameinput" name="fistname" type="text" placeholder="Tên của bạn ">
+                <input class="profile-fistnameinput" name="fistname" type="text" value="<%= data.fistname %>"
+                  placeholder="Tên của bạn ">
+
               </div>
               <div class="profile-lastname">
                 <p class="profile-title">Họ</p>
-                <input class="profile-fistnameinput" name="lastname" type="text" placeholder="Họ của bạn ">
+                <input class="profile-fistnameinput" name="lastname" type="text" value="<%= data.lastname %>"
+                  placeholder="Họ của bạn ">
+
               </div>
             </div>
             <div class="profile-story">
               <p class="profile-title">Giới thiệu</p>
-              <input class="profile-storyinput" name="story" type="text" placeholder="Kể câu chuyện của bạn">
+
+              <input class="profile-storyinput" name="dob" type="text" value="<%= data.dob %>"
+                placeholder="Kể câu chuyện của bạn">
               </input>
             </div>
             <div class="profile-weblienket">
-              <p class="profile-title">Giới thiệu</p>
-              <input class="profile-webinput" name="website" type="text"
+              <p class="profile-title">Trang web</p>
+              <input class="profile-webinput" name="website" type="text" value="<%=data.website %>"
                 placeholder="Thêm đường liên kết để hướng lưu lượng vào website">
+
               </input>
             </div>
             <div class="profile-usernamemy">
               <p class="profile-title">Tên người dùng</p>
-              <input class="profile-webinput" name="username" type="text" placeholder="Tên người dùng">
+              <input class="profile-webinput" name="username" type="text" value="<%=data.username %>"
+                placeholder="Tên người dùng">
               </input>
             </div>
             <div class="profile-setting">
-              <button class="profile-thietlap">Thiết lập lại</button>
-              <button class="profile-luu">Lưu</button>
+              <!-- <button id="udpate-<%= data.id %>" class="profile-thietlap btn-update">Thiết lập lại</button> -->
+              <button class="profile-luu" id="btn-update">Lưu</button>
+            </div>
+            <div class="iduser">
+              <input type="text" style="display: none;" name="iduser" value="<%= data.id %>">
             </div>
           </form>
         </div>
@@ -89,8 +100,8 @@
     <!-- link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-
-    <script src=""></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/profile.js"></script>
 </body>
 
 </html>

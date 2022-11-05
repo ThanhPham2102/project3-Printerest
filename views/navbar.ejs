@@ -125,21 +125,21 @@
             class="dropdown-menu"
           >
             <li style="margin-left: 6px">
-              <a style="border-radius: 8px; width: 98%" class="dropdown-item"
-                href="http://localhost:8000/auth/HomePage/PersionalPage">
+              <a
+                style="border-radius: 8px; width: 98%"
+                class="dropdown-item"
+                id="click-profile"
+                href="http://localhost:8000/auth/HomePage/PersionalPage"
+              >
                 <div style="display: flex">
                   <div class="avatar">
-                    <img
-                      class="img-avatar"
-                      src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
-                      alt=""
-                    />
+                    <img class="img-avatar" src="<%=data.avatar%>" alt="" />
                   </div>
                   <div>
                     <div class="account-name">
-                      <h6>Dissappear Dissappear</h6>
+                      <h6><%=data.fistname%> <%=data.lastname%></h6>
                       <div>Cá nhân</div>
-                      <div>thanhphammk@gmail.com</div>
+                      <div><%= data.email %></div>
                     </div>
                   </div>
                 </div>
@@ -238,7 +238,11 @@
               </a>
             </li>
             <li style="margin-left: 6px">
-              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="http://localhost:8000/auth">
+              <a
+                style="border-radius: 8px; width: 98%"
+                class="dropdown-item"
+                href="http://localhost:8000/auth"
+              >
                 <h6>Đăng xuất</h6>
               </a>
             </li>

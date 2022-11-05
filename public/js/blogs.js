@@ -27,7 +27,7 @@ tbodyBlogs.addEventListener("click", (e) => {
       .then((data) => {
         showMessageBlogs("delete", data.message);
         e.target.parentElement.parentElement.remove();
-        console.log(data);
+   
       })
       .catch((err) => {
         showMessageBlogs("delete", err.message);
@@ -46,7 +46,7 @@ tbodyBlogs.addEventListener("click", (e) => {
       user_id: tdChildListBlogs[5].innerHTML,
       role: tdChildListBlogs[6].innerHTML,
     };
-    console.log(tdChildListBlogs);
+  
 
     td.innerHTML = `
     <tr>
@@ -74,13 +74,8 @@ tbodyBlogs.addEventListener("click", (e) => {
   }
   if (e.target.classList.contains("btn-save")) {
     // GET id
-    let id = e.target.id.split("-")[1]; // update-1, update-2...
-
-    // GET current row (Lấy ra dòng hiện tại của nút update)
+    let id = e.target.id.split("-")[1];
     let td = e.target.parentElement.parentElement;
-
-    // GET current row children
-    // Lấy toàn bộ phần tử con (td list) của dòng hiện tại
     let tdChildList = e.target.parentElement.parentElement.children;
 
     let info = {
@@ -91,10 +86,7 @@ tbodyBlogs.addEventListener("click", (e) => {
       img: tdChildList[4].children[0].value,
       user_id: tdChildList[5].children[0].value,
     };
-    // .innerHTML ---> text (input) "<input />"
-    console.log("111", info.img);
-    // .children ---> 1 mảng HTML, [0] --> .value
-    // console.log(info.website, info.phone);
+ 
 
     // Tiến hành gọi fetch update
     fetch(blogsApi + `blogs/${id}`, {
@@ -106,10 +98,7 @@ tbodyBlogs.addEventListener("click", (e) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         showMessageBlogs("update", data.message);
-        // DOM để đổi lại dòng hiện tại thành một dòng bình thường không có
-        // input nằm ở bên trong nữa
         td.innerHTML = `
         <tr>
             <th scope="row">
@@ -134,9 +123,6 @@ tbodyBlogs.addEventListener("click", (e) => {
         `;
       })
       .catch((err) => console.log(err));
-    // Đổi lại nut save thành icon update
-
-    // Hiển thị ra message update thành công
   }
 });
 window.onload = function () {

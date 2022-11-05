@@ -33,11 +33,15 @@
 
       <div class="profile">
         <div class="avatar-profile"><img class="img-profile"
-            src="https://i.pinimg.com/564x/71/29/4d/71294d3b5ab062e4e7b90e6232d8d10e.jpg" alt=""></div>
+            src="<%=data.avatar %>" alt=""></div>
         <div class="infor-profile">
-          <h1 class="name-profile">Dissappear Dissappear</h1>
-          <p class="name-link">@dissappear</p>
-          <p class="total-follow"> 1.000.000.000 lượt theo dõi</p>
+          <h1 class="name-profile">
+            <%=data.fistname %>
+              <%=data.lastname %>
+          </h1>
+          <p class="name-link">@<%=data.username %>
+          </p>
+          <p class="total-follow"> 0 lượt theo dõi</p>
         </div>
         <div class="share-change">
 
@@ -84,13 +88,13 @@
 
         <div class="created-screen">
           <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created">
-            <p >Đã tạo</p>
+            <p>Đã tạo</p>
             <div>
 
             </div>
           </a>
           <a href="http://localhost:8000/auth/HomePage/PersionalPage" class="created1">
-            <p >Đã lưu</p>
+            <p>Đã lưu</p>
             <div>
 
             </div>
