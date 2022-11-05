@@ -276,7 +276,13 @@
                 <th scope="row"><%= i + 1 %></th>
                 <td><%= rows[i].id %></td>
                 <td><%= rows[i].photo_name %></td>
-                <td style="word-break: break-all"><%= rows[i].img_url %></td>
+                <td style="word-break: break-all">
+                  <img
+                    style="width: 60px; height: 60px"
+                    src="<%= rows[i].img_url %>"
+                    alt=""
+                  />
+                </td>
                 <td><%= rows[i].created_at %></td>
                 <td><%= rows[i].user_id %></td>
                 <td>

@@ -8,8 +8,15 @@ router.get(
   // requireAdmin,
   blogsController.getAllBlogs
 );
+
+// Get all photos
+router.get("/photos", blogsController.getAllPhotos);
+// Get  photo
+router.get("/photos/:id", blogsController.getOnePhoto);
+
 // // Get one by id
 router.get("/:id", blogsController.getOneBlogs);
+
 // // Create one by id
 router.post("/", blogsController.creatBlogs);
 // // Update one by id
