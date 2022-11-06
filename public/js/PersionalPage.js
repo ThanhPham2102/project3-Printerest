@@ -6,34 +6,39 @@ window.onload = function () {
   fetch(baseApi + "blogs/photos")
     .then((res) => res.json())
     .then((data) => {
-      // (req, res) => {
-      //   let id = req.params.id;
-      //   console.log(id);
-      // };
-      // console.log(data);
       let array = data.data;
-      let images = [];
+
+      let imagesID = [];
+      let userID = window.location.href.split("/")[6];
+      console.log("userID", userID);
+      console.log("day la mamg", array);
       for (let i = 0; i < array.length; i++) {
-        images.push(array[i].img_url);
+        if (Number(userID) === Number(array[i].user_id)) {
+          imagesID.push(array[i]);
+        }
       }
-      // console.log(images);
-      // Thuc hien render toan bo anh o trong .then() nay
+      console.log(imagesID);
+      let images = [];
+      for (let i = 0; i < imagesID.length; i++) {
+        images.push(imagesID[i].img_url);
+      }
       let imageIndex = 0;
       for (let i = 0; i < images.length; i++) {
+        //logic nay bi bug=> dung khi hien thi toan bo anh ra, anh rieng tung thang bi sai
         let item = {
-          id: array[i].id,
+          id: imagesID[i].id,
           title: `${array[i].photo_name}`,
           image: images[imageIndex],
-          user_id: array[i].user_id,
-          user_name: array[i].username,
-          avatar: array[i].avatar,
+
+          user_id: imagesID[i].user_id,
+          user_name: imagesID[i].username,
+          avatar: imagesID[i].avatar,
         };
+        console.log(item);
         posts.push(item);
         imageIndex++;
         if (imageIndex > images.length - 1) imageIndex = 0;
       }
-      // console.log(posts);
-
       const container4 = document.querySelector(".container4");
       function genarateMasonryGrid(columns, posts) {
         container4.innerHTML = "";
@@ -42,8 +47,6 @@ window.onload = function () {
         for (let i = 0; i < columns; i++) {
           columnWrappers[`column${i}`] = [];
         }
-        //   console.log(columnWrappers);
-
         for (let i = 0; i < posts.length; i++) {
           const column = i % columns;
           columnWrappers[`column${column}`].push(posts[i]);
@@ -72,7 +75,7 @@ window.onload = function () {
         />
       </a>
   
-      <!-- title-avatar -->
+      <!-- title-avatar
       <p class="title-img">${post.title}</p>
   
       <div class="avatar-img">
@@ -83,6 +86,7 @@ window.onload = function () {
         />
         <h6 class="name_main">${post.user_name}</h6>
       </div>
+      -->
     </a>`;
           });
           container4.appendChild(column);

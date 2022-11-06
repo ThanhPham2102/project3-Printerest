@@ -16,12 +16,9 @@ module.exports.resetpass = (req, res) => {
   res.render("passwordreset.ejs");
 };
 
-module.exports.persionalpagecreated = (req, res) => {
-  res.render("PersionalPageCreadted.ejs");
-};
-
 //DetailPage
 module.exports.DetailPage = (req, res) => {
+  let signedUser;
   let id = req.params.id; //lấy id từ param
   db.execute("SELECT * FROM tbl_photopint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
@@ -31,10 +28,18 @@ module.exports.DetailPage = (req, res) => {
         (data) => {
           // console.log(data[0][0].avatar);
           let dataUser = data[0][0];
-          // console.log("hahah", dataUser);//bug avatar thay
-          res.render("DetailPage", {
-            data: rows,
-            dataUser,
+          // console.log("hahah", dataUser.avatar, rows); //bug avatar thay
+          db.execute("SELECT * FROM tbl_userpint WHERE id =?", [
+            req.signedCookies.email,
+          ]).then((data) => {
+            // console.log("trang detailpage", data[0]);
+            signedUser = data[0];
+
+            res.render("DetailPage", {
+              data: rows,
+              dataUser,
+              signedUser,
+            });
           });
         }
       );
@@ -281,6 +286,7 @@ module.exports.getprofile = (req, res) => {
   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
       let [rows] = data;
+      console.log(data);
       res.render("profile", {
         data: rows[0],
       });
@@ -300,6 +306,23 @@ module.exports.getPer = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+module.exports.persionalpagecreated = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  console.log(id);
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      console.log(data[0][0]);
+      // let [rows] = data;
+      let dataCreated = data[0][0];
+
+      res.render("PersionalPageCreadted.ejs", {
+        dataCreated,
+      });
+    })
+    .catch((err) => console.log(err));
+
+  // res.render("PersionalPageCreadted.ejs");
+};
 
 module.exports.profileUpdate = (req, res) => {
   let { id } = req.params;
@@ -310,7 +333,7 @@ module.exports.profileUpdate = (req, res) => {
     [fistname, lastname, dob, website, username, id]
   )
     .then((data) => {
-      //   console.log(data);
+      // console.log(data);
       res.status(200).json({
         status: "updatesuccess",
         message: "update successfully",

@@ -13,20 +13,20 @@ router.get("/signup", authController.renderRegister);
 
 // router.get("/HomePage", authController.homepage);
 // router.get("/HomePage/PersionalPage", authController.persionalpage);
-router.get(
-  "/HomePage/PersionalPageCreated",
-  authController.persionalpagecreated
-);
+// router.get(
+//   "/HomePage/PersionalPageCreated",
+//   authController.persionalpagecreated
+// );
 
 router.get("/HomePage/DetailPage/:id", authController.DetailPage);
 
 router.get("/:id", requireHome, authController.homepage);
 router.get("/HomePage/:id", authController.homepage);
 // router.get("/HomePage/PersionalPage", authController.persionalpage);
-router.get(
-  "/HomePage/PersionalPageCreated",
-  authController.persionalpagecreated
-);
+// router.get(
+//   "/HomePage/PersionalPageCreated",
+//   authController.persionalpagecreated
+// );
 
 // router.get("/HomePage/profile", authController.profile);
 
@@ -37,6 +37,10 @@ router.post("/resetpass", authController.loginresetpass);
 router.get("/HomePage/profile/:id", authController.getprofile);
 
 router.get("/HomePage/PersionalPage/:id", authController.getPer);
+router.get(
+  "/HomePage/PersionalPageCreated/:id",
+  authController.persionalpagecreated
+);
 
 router.put("/HomePage/profile/:id", authController.profileUpdate);
 

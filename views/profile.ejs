@@ -36,7 +36,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" style="margin-right: 30px">
             <a class="nav-link trangchu" aria-current="page" href="http://localhost:8000/auth/HomePage">
-              <h6>Trang chủ</h6>
+              <h6 style="width: 75px;">Trang chủ</h6>
             </a>
           </li>
 
@@ -79,10 +79,23 @@
             </a>
             <div class="tinnhan">Tin nhắn</div>
           </li>
-          <li id="click-pers" class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
-            <a class="nav-link active" aria-current="page" href="#">D</a>
-            <div class="hoso">Hồ sơ của bạn</div>
-          </li>
+          <li
+          id="click-per"
+          class="nav-item icon-navbar icon_navbar icon-navbar__hoso"
+        >
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id%>"
+          >
+            <img
+              style="border-radius: 50px; width: 40px; height: 40px"
+              src="<%=data.avatar%>"
+              alt=""
+            />
+          </a>
+          <div class="hoso">Hồ sơ của bạn</div>
+        </li>
 
           <li class="nav-item dropdown all">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -201,12 +214,14 @@
           <p class="profile-title">Ảnh</p>
           <div class="profile-img">
             <div class="profile-imgmy">
-              <img src="http://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg"
+              <img src="<%=data.avatar%>"
                 style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;" alt="">
             </div>
-            <button class="profile-imgbutton">
+            <!--gắn lại sự kiện  -->
+            <div class="profile-imgbutton">
               <p class="profile-imgtitle"> Thay đổi</p>
-            </button>
+            </div>
+            <!--  -->
           </div>
           <div class="profile-username">
             <div class="profile-fistname">

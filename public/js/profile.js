@@ -26,6 +26,7 @@ formupdate.addEventListener("submit", (e) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data.status);
       if (data.status === "updatesuccess") {
         Swal.fire({
           icon: "success",
@@ -52,12 +53,3 @@ clickPer.onclick = (e) => {
   let id = window.location.href.split("/")[6];
   window.location.href = `/auth/HomePage/PersionalPage/${id}`;
 };
-
-// const clickPer = document.getElementById("click-per2");
-
-// clickPer.onclick = (e) => {
-//   e.preventDefault();
-//   console.log(window.location.href.split("/"));
-//   let id = window.location.href.split("/")[6];
-//   window.location.href = `/auth/HomePage/PersionalPage/${id}`;
-// };

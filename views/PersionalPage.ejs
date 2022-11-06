@@ -35,10 +35,11 @@
         <div class="avatar-profile"><img class="img-profile" src="<%=data.avatar %>" alt=""></div>
         <div class="infor-profile">
           <h1 class="name-profile">
-            <%=data.fistname %>
-              <%=data.lastname %>
+            <%=data.username%>
           </h1>
-          <p class="name-link">@<%=data.username %>
+          <p class="name-link">@<%=data.fistname %><%=data.lastname %>
+          </p>
+          <p class="name-link">email:<%=data.email %>
           </p>
           <p class="total-follow"> 0 lượt theo dõi</p>
         </div>
@@ -54,26 +55,7 @@
                 Chia sẻ
               </a>
               <%- include('share'); -%>
-                <!-- <ul style=""class="dropdown-menu dropdown_menu_share_mxh">
-                        <li  style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;"class="dropdown-item dropdown-item_mxh btn-send-on-printer1" href="#">Chia sẻ</a></li>
-                         <li style="margin-left: 6px;" class="item-mxh boder-bottom">
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="logo-mxh"src="https://cdn-icons-png.flaticon.com/128/2504/2504845.png" alt=""> WhatApps</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="logo-mxh"src="https://cdn-icons-png.flaticon.com/128/145/145802.png" alt=""> Facebook</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="logo-mxh"src="https://cdn-icons-png.flaticon.com/128/3670/3670151.png" alt=""> Twiter</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="logo-mxh"src="https://cdn-icons-png.flaticon.com/128/1011/1011407.png" alt=""> Sao chép liên kết</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="logo-mxh"src="https://cdn-icons-png.flaticon.com/128/2089/2089181.png" alt=""> Email</a>
-                        </li>
-                        <li  class="boder_bottom" style="margin-left: 6px;"></li>
-                        <li style="margin-left: 6px;"><a  style="border-radius: 8px;width: 98%;"class="dropdown-item dropdown-item_mxh btn-send-on-printer" href="#">Gửi trên Printerest</a></li>
-                        <li style="margin-left: 6px;" class="item-profile">
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh dropdown-item_mxh" href="#"> <img class="avatar-profile_share search-profile"src="https://cdn-icons-png.flaticon.com/128/2952/2952117.png" alt="">Tìm kiếm</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="avatar-profile_share"src="https://i.pinimg.com/474x/31/11/21/31112187b0fccf4c17cb3871fb60b84f.jpg" alt="">Bách Nguyễn</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="avatar-profile_share"src=  "https://i.pinimg.com/564x/83/76/60/837660daac6b40ead974d441d797909e.jpg" alt=""> Diệu Linh</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="avatar-profile_share"src="https://i.pinimg.com/736x/e5/5e/c6/e55ec644366ebfd5331d5f2bdff933e9--voi-japan-girl.jpg" alt=""> Thanh Phạm</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="avatar-profile_share"src="https://i.pinimg.com/474x/43/f8/6f/43f86f0294d748d541fba47f080efc93.jpg" alt="">  fuckboy</a>
-                            <a style="border-radius: 8px;width: 98%;" class="dropdown-item dropdown-item_mxh" href="#"> <img class="avatar-profile_share"src=  "https://i.pinimg.com/564x/83/76/60/837660daac6b40ead974d441d797909e.jpg" alt=""> Diệu Linh</a>
-                        </li>
-                      </ul> -->
+              
             </li>
           </ul>
           <a class="btn_change" id="id-profile" href="#">
@@ -86,13 +68,13 @@
 
 
         <div class="created-screen">
-          <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created">
+          <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated/<%=data.id %>" class="created">
             <p>Đã tạo</p>
             <div>
 
             </div>
           </a>
-          <a href="http://localhost:8000/auth/HomePage/PersionalPage" class="created1">
+          <a href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id %>" class="created1">
             <p>Đã lưu</p>
             <div>
 
@@ -220,6 +202,84 @@
                 alt="Card image cap">
 
             </div>
+            
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+        <div><a class="title-tatal__ghim" href="">Tất cả các Ghim xxxxxxxxxxxxxx</a>
+          <div class="time_ghimted">
+            <p class="total_ghimted">13 ghim</p>
+            <p style="color: rgb(109, 108, 108);">100 năm trước</p>
+          </div>
+        </div>
+      </div>
+      <div class="bst-imsge">
+
+        <div class="row" style="width: 200px;">
+
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt="Card image cap">
+
+            </div>
+
+          </div>
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.pinimg.com/474x/31/11/21/31112187b0fccf4c17cb3871fb60b84f.jpg"
+                alt="Card image cap">
+
+            </div>
+
+          </div>
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.pinimg.com/474x/18/52/ad/1852ad7338c7c76f0c1f6a356f4452ba.jpg" ,
+                alt="Card image cap">
+
+            </div>
+
+          </div>
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.pinimg.com/474x/31/11/21/31112187b0fccf4c17cb3871fb60b84f.jpg"
+                alt="Card image cap">
+
+            </div>
+
+          </div>
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.pinimg.com/474x/18/52/ad/1852ad7338c7c76f0c1f6a356f4452ba.jpg" ,
+                alt="Card image cap">
+
+            </div>
+
+          </div>
+          <div class="col-2">
+            <div class="card card-img" style="width: 10rem;padding: 5px;">
+              <img class="card-img-top" src="https://i.pinimg.com/564x/83/76/60/837660daac6b40ead974d441d797909e.jpg" ,
+                alt="Card image cap">
+
+            </div>
+            
 
           </div>
 
