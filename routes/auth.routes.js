@@ -44,11 +44,6 @@ router.get(
 
 router.put("/HomePage/profile/:id", authController.profileUpdate);
 
-// router.put("/HomePage/profile/:id", authController.putfrofile);
 
-// push: sửa đổi; đẩy lấy(update)
-
-// admin
-// router.get("/Admin/user", authController.profile);
 
 module.exports = router;
