@@ -10,8 +10,8 @@ const ejs = require("ejs");
 
 // import routes
 const authRoutes = require("./routes/auth.routes.js");
-const userRoutes = require("./routes/users.routes");
-const adminRoutes = require("./routes/admin.routes");
+const userRoutes = require("./routes/users.routes.js");
+const adminRoutes = require("./routes/admin.routes.js");
 const { requireAuth } = require("./middlewares/auth.middleware");
 const cookieParser = require("cookie-parser");
 let blogsRoutes = require("./routes/blogs.routes.js");
@@ -69,9 +69,10 @@ app.use(
 );
 
 // admin
-// app.use("/Admin/users", requireAuth, authRoutes);
 
-app.use("/admin", requireAuth, adminRoutes);
+app.use("/admin", adminRoutes);
+
+app.use("/users", userRoutes);
 // Listen on port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

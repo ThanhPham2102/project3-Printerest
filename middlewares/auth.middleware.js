@@ -36,3 +36,11 @@ module.exports.requirePer = (req, res, next) => {
     next();
   }
 };
+// module.exports.requireAdmin = (req, res, next) => {
+//   let { userId } = req.signedCookies;
+//   if (req.signedCookies.role === "admin") {
+//     next();
+//   } else {
+//     res.redirect(`/users`);
+//   }
+// };
