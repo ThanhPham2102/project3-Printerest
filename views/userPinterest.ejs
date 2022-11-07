@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
     <title>Users Pinterest</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <style>
@@ -46,11 +47,22 @@
 <body>
     <ul class="nav nav-tabs navbar-dark bg-dark">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Users Pinterest</a>
+            <a class="nav-link active " id="btn-users" aria-current="page"
+                href="http://localhost:8000/admin/users">Users Pinterest</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link signout-btn" href="#">Logout</a>
+            <a class="nav-link " id="btn-photo" aria-current="page" href="http://localhost:8000/admin/photo">Photo
+                Pinterest</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " id="btn-collection" aria-current="page"
+                href="http://localhost:8000/admin/collection">Collection Pinterest</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " id="btn-collectionphoto" aria-current="page"
+                href="http://localhost:8000/admin/collectionphoto">Collection Photo Pinterest</a>
+        </li>
+
     </ul>
 
 
@@ -88,7 +100,7 @@
                     </tr>
                 </thead>
 
-                
+
                 <tbody id="tbody">
                     <% for( let i=0; i < rows.length; i++ ) { %>
                         <tr>
