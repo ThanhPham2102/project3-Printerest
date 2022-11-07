@@ -35,13 +35,16 @@
         <div class="avatar-profile"><img class="img-profile" src="<%=data.avatar %>" alt=""></div>
         <div class="infor-profile">
           <h1 class="name-profile">
-            <%=data.username%>
+            <%=data.fistname%>
+              <%=data.lastname%>
           </h1>
-          <p class="name-link">@<%=data.fistname %><%=data.lastname %>
+          <p class="name-link">@<%=data.fistname %>
+              <%=data.lastname %>
           </p>
-          <p class="name-link">email:<%=data.email %>
+          <p class="name-link">
+            @<%=data.username %>
           </p>
-          <p class="total-follow"> 0 lượt theo dõi</p>
+          <p class="total-follow"> 1000 lượt theo dõi</p>
         </div>
         <div class="share-change">
 
@@ -55,7 +58,7 @@
                 Chia sẻ
               </a>
               <%- include('share'); -%>
-              
+
             </li>
           </ul>
           <a class="btn_change" id="id-profile" href="#">
@@ -202,7 +205,7 @@
                 alt="Card image cap">
 
             </div>
-            
+
 
           </div>
 
@@ -279,7 +282,7 @@
                 alt="Card image cap">
 
             </div>
-            
+
 
           </div>
 

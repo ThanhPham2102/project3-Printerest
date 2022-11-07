@@ -126,7 +126,7 @@
         <ul class="pagination">
           <li class="page-item"><a class="page-link" href="#">Previous</a></li>
           <% for( let i=1; i <=Math.ceil(total/page_size_photos); i++ ) { %>
-            <li class="page-item"><a class="page-link" href="/users?page_size=<%=page_size_photos%>&page_index=<%=i%>">
+            <li class="page-item"><a class="page-link" href="/photo?page_size=<%=page_size_photos%>&page_index=<%=i%>">
                 <%=i%>
               </a></li>
             <% } %>
