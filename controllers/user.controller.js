@@ -9,29 +9,29 @@ let strongRegex = new RegExp(
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
 );
 
-module.exports.getAll = (req, res) => {
-  let { page_size, page_index } = req.query;
+// module.exports.getAll = (req, res) => {
+//   let { page_size, page_index } = req.query;
  
-  page_index = Number(page_index) || 1; //(page_index=page_index?page_index=1)
-  page_size = Number(page_size) || 5;
-  let total = 0;
+//   page_index = Number(page_index) || 1; //(page_index=page_index?page_index=1)
+//   page_size = Number(page_size) || 5;
+//   let total = 0;
 
-  // )
-  db.execute(`SELECT * FROM tbl_userpint`)
-    .then((data) => {
-      let [rows, cols] = data;
-      total = rows.length;
-      return db.execute(
-        `SELECT * FROM tbl_userpint LIMIT ${page_size} OFFSET
-          ${(page_index - 1) * page_size}`
-      );
-    })
-    .then((data) => {
-      let [rows, cols] = data;
-      res.render("userPinterest", { rows, total, page_size, page_index });
-    })
-    .catch((err) => console.log(err));
-};
+//   // )
+//   db.execute(`SELECT * FROM tbl_userpint`)
+//     .then((data) => {
+//       let [rows, cols] = data;
+//       total = rows.length;
+//       return db.execute(
+//         `SELECT * FROM tbl_userpint LIMIT ${page_size} OFFSET
+//           ${(page_index - 1) * page_size}`
+//       );
+//     })
+//     .then((data) => {
+//       let [rows, cols] = data;
+//       res.render("userPinterest", { rows, total, page_size, page_index });
+//     })
+//     .catch((err) => console.log(err));
+// };
 
 // show 1 nguoi dung ra=>xuat ra trang ca nhan
 module.exports.getOne = (req, res) => {
@@ -134,6 +134,33 @@ module.exports.profileUpdateUser = (req, res) => {
       res.status(200).json({
         message: "update one successfully",
       });
+    })
+    .catch((err) => console.log(err));
+};
+
+
+
+
+module.exports.getAll = (req, res) => {
+  let { page_size, page_index } = req.query;
+ 
+  page_index = Number(page_index) || 1; //(page_index=page_index?page_index=1)
+  page_size = Number(page_size) || 5;
+  let total = 0;
+
+  // )
+  db.execute(`SELECT * FROM tbl_userpint`)
+    .then((data) => {
+      let [rows, cols] = data;
+      total = rows.length;
+      return db.execute(
+        `SELECT * FROM tbl_userpint LIMIT ${page_size} OFFSET
+          ${(page_index - 1) * page_size}`
+      );
+    })
+    .then((data) => {
+      let [rows, cols] = data;
+      res.render("userPinterest", { rows, total, page_size, page_index });
     })
     .catch((err) => console.log(err));
 };

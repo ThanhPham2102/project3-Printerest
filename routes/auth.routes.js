@@ -64,12 +64,7 @@ router.post(
 
 router.put("/HomePage/profile/:id", authController.profileUpdate);
 
-// router.put("/HomePage/profile/:id", authController.putfrofile);
 
-// push: sửa đổi; đẩy lấy(update)
-
-// admin
-// router.get("/Admin/user", authController.profile);
 
 router.get("/HomePage/profile/:id", uploadController.printUploadForm);
 router.post(
