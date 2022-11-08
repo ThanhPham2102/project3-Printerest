@@ -6,7 +6,6 @@ window.onload = function () {
   fetch(baseApi + "blogs/photos")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       let array = data.data;
       let images = [];
       for (let i = 0; i < array.length; i++) {
@@ -21,7 +20,7 @@ window.onload = function () {
           title: `${array[i].photo_name}`,
           image: images[imageIndex],
           user_id: array[i].user_id,
-          user_name: array[i].user_name,
+          user_name: array[i].username,
           avatar: array[i].avatar,
         };
         posts.push(item);
@@ -116,4 +115,13 @@ window.onload = function () {
     .catch((err) => {
       console.log(err);
     });
+};
+
+const clickPer = document.getElementById("click-per");
+
+clickPer.onclick = (e) => {
+  e.preventDefault();
+  console.log(window.location.href.split("/"));
+  let id = window.location.href.split("/")[5];
+  window.location.href = `/auth/HomePage/PersionalPage/${id}`;
 };

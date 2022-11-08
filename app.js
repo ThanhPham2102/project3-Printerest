@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const app = express();
 const port = 8000;
@@ -12,7 +10,8 @@ const ejs = require("ejs");
 
 // import routes
 const authRoutes = require("./routes/auth.routes.js");
-const userRoutes = require("./routes/users.routes");
+const userRoutes = require("./routes/users.routes.js");
+const adminRoutes = require("./routes/admin.routes.js");
 const { requireAuth } = require("./middlewares/auth.middleware");
 const cookieParser = require("cookie-parser");
 let blogsRoutes = require("./routes/blogs.routes.js");
@@ -38,8 +37,15 @@ app.use(cookieParser("i love feifei"));
 app.get("/", requireAuth, (req, res) => {
   res.redirect("/auth");
 });
-// use routes
+// Auth routes
 app.use("/auth", authRoutes);
+// app.use("/HomePage", requireAuth, authRoutes);
+// app.use("/resetpass", authRoutes);
+// app.use("/HomePage/PersionalPage", requireAuth, authRoutes);
+// app.use("/HomePage/profile", requireAuth, authRoutes);
+
+// Users routes
+// app.use("/admin", requireAdmin, userRoutes);
 // blogs Router
 app.use(
   "/blogs",
@@ -63,9 +69,10 @@ app.use(
 );
 
 // admin
-// app.use("/Admin/users", requireAuth, authRoutes);
 
-app.use("/users", requireAuth, userRoutes);
+app.use("/admin", adminRoutes);
+
+app.use("/users", userRoutes);
 // Listen on port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

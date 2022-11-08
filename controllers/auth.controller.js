@@ -4,6 +4,7 @@ const db = require("../models/db");
 const bcrypt = require("bcrypt");
 var strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,24}$");
 const saltRounds = 10;
+const _ = require("lodash");
 
 module.exports.renderRegister = (req, res) => {
   res.render("login.ejs");
@@ -16,75 +17,9 @@ module.exports.resetpass = (req, res) => {
   res.render("passwordreset.ejs");
 };
 
-module.exports.persionalpage = (req, res) => {
-  res.render("PersionalPage.ejs");
-};
-module.exports.persionalpagecreated = (req, res) => {
-  res.render("PersionalPageCreadted.ejs");
-};
-// ex
-module.exports.printIdMovie = (req, res) => {
-  let id = req.params.id;
-  let today = new Date();
-  // today = mm + "/" + dd + "/" + yyyy;
-  let thirtyDate = new Date(new Date().setDate(today.getDate() + 30));
-
-  thirtyDate = today.toISOString().substring(0, 10);
-  db.execute("SELECT * FROM table_movies WHERE movieId = ?", [id])
-    .then((data) => {
-      let [rows] = data;
-      let date = new Date(rows[0].releaseDate);
-      let releaseDate = date.toISOString().substring(0, 10);
-      let movieData = {
-        todayCalendar: today,
-        title: rows[0].title,
-        description: rows[0].description,
-        duration: rows[0].duration,
-        language: rows[0].language,
-        releaseDate: releaseDate,
-        genre: rows[0].genre,
-        image: rows[0].image,
-        director: rows[0].director,
-        casts: rows[0].casts,
-      };
-
-      let movieArray = [];
-      for (let i = 0; i < 30; i++) {
-        movieArray.push(i);
-      }
-      db.execute("SELECT * FROM city").then((data) => {
-        let city = data[0];
-        db.execute("SELECT * FROM cinema").then((data) => {
-          let cinema = data[0];
-          console.log(cinema);
-          if (Object.keys(req.signedCookies).length === 0) {
-            res.render("movieId", {
-              userName: "",
-              movieData,
-              movieArray,
-              city,
-              cinema,
-            });
-          } else {
-            res.render("movieId", {
-              userName: req.signedCookies.userName,
-              movieData,
-              movieArray,
-              city,
-              cinema,
-            });
-          }
-        });
-      });
-    })
-
-    .catch((err) => {
-      res.status(500).json({ message: err });
-    });
-};
-// ex
-//
+//DetailPage
 module.exports.DetailPage = (req, res) => {
+  let signedUser;
   let id = req.params.id; //lấy id từ param
   db.execute("SELECT * FROM tbl_photopint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
@@ -94,10 +29,18 @@ module.exports.DetailPage = (req, res) => {
         (data) => {
           // console.log(data[0][0].avatar);
           let dataUser = data[0][0];
-          // console.log(dataUser);
-          res.render("DetailPage", {
-            data: rows,
-            dataUser,
+          // console.log("hahah", dataUser.avatar, rows); //bug avatar thay
+          db.execute("SELECT * FROM tbl_userpint WHERE id =?", [
+            req.signedCookies.email,
+          ]).then((data) => {
+            // console.log("trang detailpage", data[0]);
+            signedUser = data[0];
+
+            res.render("DetailPage", {
+              data: rows,
+              dataUser,
+              signedUser,
+            });
           });
         }
       );
@@ -117,13 +60,18 @@ module.exports.getOne = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports.profile = (req, res) => {
-  res.render("profile.ejs");
-};
 module.exports.homepage = (req, res) => {
-  res.render("HomePage.ejs");
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      console.log(rows);
+      res.render("HomePage", {
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
 };
-
 module.exports.login = (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
@@ -149,7 +97,7 @@ module.exports.login = (req, res) => {
             .json({ status: "errpass", message: "Wrong password" });
         } else {
           // console.log("hello from passs vaid");
-          res.cookie("email", find.id, { signed: true });
+          res.cookie("id", find.id, { signed: true });
           res.cookie("role", find.role, { signed: true });
           res.status(200).json({
             status: "success",
@@ -201,11 +149,11 @@ module.exports.loginresetpass = (req, res) => {
 };
 
 module.exports.register = (req, res) => {
-  let { email, password, age } = req.body;
+  let { email, password, age, username, role } = req.body;
 
-  if (!email || !password || !age) {
+  if (!email || !password || !age || !username || !role) {
     return res.status(500).json({
-      messages: "Invalid email or password end age",
+      messages: "Invalid email, password, age and username",
     });
   }
 
@@ -235,8 +183,20 @@ module.exports.register = (req, res) => {
       } else {
         let id = Math.floor(Math.random() * 1000000);
         return db.execute(
-          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, email, password, age, null, null, null, null, null, null]
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [
+            id,
+            email,
+            password,
+            age,
+            null,
+            null,
+            null,
+            null,
+            null,
+            username,
+            role,
+          ]
         );
       }
     })
@@ -256,11 +216,11 @@ module.exports.register = (req, res) => {
 };
 
 module.exports.signupregister = (req, res) => {
-  let { email, password, age } = req.body;
+  let { email, password, age, username, role } = req.body;
 
-  if (!email || !password || !age) {
+  if (!email || !password || !age || !username || !role) {
     return res.status(500).json({
-      messages: "Invalid email or password end age",
+      messages: "Invalid email, password , age and username",
     });
   }
 
@@ -290,8 +250,20 @@ module.exports.signupregister = (req, res) => {
       } else {
         let id = Math.floor(Math.random() * 1000000);
         return db.execute(
-          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, email, password, age, null, null, null, null, null, null]
+          "INSERT INTO tbl_userpint VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [
+            id,
+            email,
+            password,
+            age,
+            null,
+            null,
+            null,
+            null,
+            null,
+            username,
+            role,
+          ]
         );
       }
     })
@@ -308,4 +280,134 @@ module.exports.signupregister = (req, res) => {
         err: err,
       });
     });
+};
+
+module.exports.getprofile = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      console.log(data);
+      res.render("profile", {
+        data: rows[0],
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+module.exports.getPer = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      let [rows] = data;
+      // console.log("hahahaha", rows[0]);
+      let idCollections = req.params.id;
+      console.log("1111", id);
+      db.execute("SELECT * FROM tbl_collectionpint WHERE user_id =?", [
+        idCollections,
+      ]).then((data1) => {
+        let dataColections = data1[0];
+
+        let renderData = _.chunk(dataColections, 6);
+        
+        let id = req.params.id;
+        db.execute(
+          `SELECT a.id, b.collection_name, c.photo_id, d.img_url, d.photo_name 
+          FROM tbl_userpint as a, tbl_collectionpint as b,tbl_collection_photo as c,tbl_photopint as d 
+          WHERE a.id = b.user_id AND b.id = c.collection_id AND d.id = photo_id;`,
+          [id]
+        ).then((data2) => {
+          let x=data2[0];
+          res.render("PersionalPage", {
+            data: rows[0],
+            renderData,
+            x
+          });
+        });
+        
+      });
+    })
+    .catch((err) => console.log(err));
+};
+module.exports.persionalpagecreated = (req, res) => {
+  let id = req.params.id; //lấy id từ param
+  console.log(id);
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+    .then((data) => {
+      console.log(data[0][0]);
+      // let [rows] = data;
+      let dataCreated = data[0][0];
+
+      res.render("PersionalPageCreadted.ejs", {
+        dataCreated,
+      });
+    })
+    .catch((err) => console.log(err));
+
+  // res.render("PersionalPageCreadted.ejs");
+};
+
+module.exports.profileUpdate = (req, res) => {
+  let { id } = req.params;
+
+  let { fistname, lastname, dob, website, username } = req.body;
+  db.execute(
+    "UPDATE tbl_userpint SET fistname =?,lastname =?,dob =?,website =?,username =? WHERE id=?",
+    [fistname, lastname, dob, website, username, id]
+  )
+    .then((data) => {
+      // console.log(data);
+      res.status(200).json({
+        status: "updatesuccess",
+        message: "update successfully",
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+module.exports.uploadPhoto = (req, res) => {
+  let { id } = req.params;
+
+  // console.log(`id`, id);
+  // let { avatar } = req.body;
+
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id])
+    .then((data) => {
+      // console.log(data);
+      let [rows] = data[0];
+      // console.log(rows);
+      console.log(req.body.namephoto);
+      let img = req.file.filename;
+      console.log(img);
+      // console.log(id);
+      let user_id = rows.id;
+      // console.log(user_id);
+      let img_url = `http://localhost:8000/asset/${img}`;
+      let id = Math.floor(Math.random() * 1000000);
+
+      let photo_name = req.body.namephoto;
+      let created_at = "2022-01-01 00:00:00";
+      db.execute("INSERT INTO tbl_photopint VALUES(?, ?, ?, ?, ?)", [
+        id,
+        photo_name,
+        img_url,
+        created_at,
+        user_id,
+      ]) //so sánh với id trong db
+        .then((data) => {
+          let id = req.params.id;
+          db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+            .then((data) => {
+              console.log(data[0][0]);
+              // let [rows] = data;
+              let dataCreated = data[0][0];
+              res.render("PersionalPageCreadted.ejs", {
+                dataCreated,
+              });
+            })
+            .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
 };

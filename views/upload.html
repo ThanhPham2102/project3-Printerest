@@ -1,96 +1,503 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Bootsrap 4 CDN-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
-
-    <!--Fontawesome CDN-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-      crossorigin="anonymous"
+      href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css"
     />
-
-    <!--Custom styles-->
-    <link rel="stylesheet" href="loginPage.css" />
-    <title>Upload Img</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css"
+    />
+    <title>Freebie: 4 Bootstrap Gallery Templates</title>
   </head>
+
+  <style>
+    body {
+      background-color: #434c50;
+      min-height: 100vh;
+      font: normal 16px sans-serif;
+      padding: 40px 0;
+    }
+
+    /* .container.gallery-container {
+      background-color: #fff;
+      color: #35373a;
+      max-height: 40vh;
+      padding: 30px 50px;
+    } */
+    .container {
+      max-height: 300px;
+      /* overflow-y: scroll; */
+    }
+    .gallery-container h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-family: "Droid Sans", sans-serif;
+      font-weight: bold;
+    }
+
+    .gallery-container p.page-description {
+      text-align: center;
+      margin: 25px auto;
+      font-size: 18px;
+      color: #999;
+    }
+
+    .tz-gallery {
+      padding: 40px;
+      overflow-y: scroll;
+      max-height: 300px;
+    }
+
+    /* Override bootstrap column paddings */
+    .tz-gallery .row > div {
+      padding: 2px;
+    }
+
+    .tz-gallery .lightbox img {
+      width: 100%;
+      border-radius: 0;
+      position: relative;
+    }
+
+    .tz-gallery .lightbox:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -13px;
+      margin-left: -13px;
+      opacity: 0;
+      color: #fff;
+      font-size: 26px;
+      font-family: "Glyphicons Halflings";
+      content: "\e003";
+      pointer-events: none;
+      z-index: 9000;
+      transition: 0.4s;
+    }
+
+    .tz-gallery .lightbox:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(46, 132, 206, 0.7);
+      content: "";
+      transition: 0.4s;
+    }
+
+    .tz-gallery .lightbox:hover:after,
+    .tz-gallery .lightbox:hover:before {
+      opacity: 1;
+    }
+
+    .baguetteBox-button {
+      background-color: transparent !important;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
   <body>
-    <div class="container">
-      <div class="d-flex justify-content-center h-100">
-        <div style="height: auto;width: 800px;"class="card">
-          <div class="card-header">
-            <h3>Upload Idea</h3>
-            <div class="d-flex justify-content-end social_icon">
-           
-            </div>
+    <div style="width: 400px" class="container gallery-container">
+      <div class="tz-gallery">
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                alt="Bridge"
+              />
+            </a>
           </div>
-          <div class="card-body">
-            <form id="upload-form"
-            enctype="multipart/form-data" 
-            action="" 
-            method="POST">
-              <div class="input-group form-group">
-                <div class="input-group-prepend">
-                
-                </div>
-                <input
-                  type="text"
-                  class="form-control title"
-                  placeholder="Title"
-                  name="email"
-                />
-              </div>
-
-
-              <div class="input-group form-group">
-                <div class="input-group-prepend">
-                 
-                </div>
-                <div class="form-floating" style="width: 150%;">
-                    <textarea class="form-control" placeholder="Leave a Content here" id="floatingTextarea2" style="height: 400px"></textarea>
-                    <label for="floatingTextarea2" style="color: aliceblue;"></label>
-                  </div>
-              </div>
-
-
-
-
-              <div class="input-group form-group">
-                <div class="input-group-prepend">
-                 
-                </div>
-                <input
-                  type="file"
-                  class="form-control"
-                  id="image"
-                  placeholder="file"
-                  name="image"
-                />
-              </div>
-             
-              <div class="form-group">
-                <input
-                  type="submit"
-                  value="Upload"
-                  class="btn float-right login_btn"
-                />
-              </div>
-            </form>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                alt="Park"
+              />
+            </a>
           </div>
-      
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-8">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                alt="Traffic"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                alt="Coast"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                alt="Rails"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                alt="Bridge"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                alt="Park"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                alt="Traffic"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                alt="Coast"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                alt="Rails"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <script src="/js/login.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+      baguetteBox.run(".tz-gallery");
+    </script>
+  </body>
+  <body>
+    <div style="width: 400px" class="container gallery-container">
+      <div class="tz-gallery">
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                alt="Bridge"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                alt="Park"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-8">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                alt="Traffic"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                alt="Coast"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                alt="Rails"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                alt="Bridge"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                alt="Park"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                alt="Tunnel"
+              />
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                alt="Traffic"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                alt="Coast"
+              />
+            </a>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <a
+              class="lightbox"
+              href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+            >
+              <img
+                src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                alt="Rails"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+      baguetteBox.run(".tz-gallery");
+    </script>
   </body>
 </html>

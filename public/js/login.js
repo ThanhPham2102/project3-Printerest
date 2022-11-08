@@ -8,9 +8,6 @@ const singupButton = document.getElementById("btn_signUp");
 const containerx = document.getElementById("containerx");
 const formlogup = document.getElementById("logup-form");
 
-// const errPass = document.getElementById("errPass");
-// const errEmail = document.getElementById("errEmail");
-
 singupButton.addEventListener("click", () => {
   containerx.classList.add("right-panel-active");
 });
@@ -23,11 +20,16 @@ formlogup.addEventListener("submit", (e) => {
   e.preventDefault();
   let email = formlogup.email.value;
   let password = formlogup.password.value;
+  let username = formlogup.username.value;
   let age = formlogup.age.value;
+  let role = "user";
+
   let data = {
     email,
     password,
+    username,
     age,
+    role,
   };
   fetch(api + "auth/signup", {
     method: "POST",
@@ -68,6 +70,18 @@ formlogup.addEventListener("submit", (e) => {
         Swal.fire({
           icon: "warning",
           title: "Mật Khẩu không được bỏ trống",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      }
+      if (username === "") {
+        Swal.fire({
+          icon: "warning",
+          title: "Tên người dùng không được bỏ trống",
           showClass: {
             popup: "animate__animated animate__fadeInDown",
           },
@@ -162,6 +176,7 @@ formlogup.addEventListener("submit", (e) => {
           },
         });
       }
+
       if (data.status === "created successfully") {
         Swal.fire({
           icon: "success",
@@ -259,8 +274,14 @@ formlogin.addEventListener("submit", (e) => {
           },
         });
       }
+      if (
+        (email === "phongdh2001@gmail.com") &
+        (password === "Phong@88Admin")
+      ) {
+        window.location.href = `/users`;
+      }
       if (data.status === "success") {
-        window.location.href = "/auth/HomePage";
+        window.location.href = `/auth/HomePage`;
       }
     })
     .catch((err) => {

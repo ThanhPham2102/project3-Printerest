@@ -6,95 +6,300 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-  <link rel="icon"
-    href="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg">
-  <title>trang ca nhan</title>
+  <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+  <title>Trang cá nhân</title>
   <!-- modal -->
   <!--  -->
-  
+
   <link rel="stylesheet" href="/css/persionalpageCreated.css">
- 
+
 </head>
 
 <!-- navbar -->
-<%- include('navbar'); -%>
-  <!-- end-nabar -->
 
-  <!-- container -->
+<nav class="navbar navbar-expand-lg bg-light header_nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="http://localhost:8000/auth/HomePage" style="display: flex">
+      <img class="imgPint"
+        src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+        alt="http://localhost:8000/auth/" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" style="margin-right: 30px">
+          <a class="nav-link trangchu" aria-current="page" href="http://localhost:8000/auth/HomePage">
+            <h6>Trang chủ</h6>
+          </a>
+        </li>
 
-  <main>
-    <div class="container1">
-      <div class="profile">
-        <div class="avatar-profile"><img class="img-profile"
-            src="https://i.pinimg.com/564x/71/29/4d/71294d3b5ab062e4e7b90e6232d8d10e.jpg" alt=""></div>
-        <div class="infor-profile">
-          <h1 class="name-profile">Dissappear Dissappear</h1>
-          <p class="name-link">@dissappear</p>
-          <p class="total-follow"> 1.000.000.000 lượt theo dõi</p>
-        </div>
-        <div class="share-change">
-
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <!-- chiase -->
-            <li class="nav-item dropdown dropdown-all_share">
-
-              <a class="nav-link share-change__share" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Chia sẻ
-              </a>
-              <%- include('share'); -%>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar-tao" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Tạo
+          </a>
+          <ul class="dropdown-menu dropdown_menu_tao">
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                Tạo Ghim ý Tưởng</a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">Tạo Ghim</a>
             </li>
           </ul>
-          <a class="btn_change" href="http://localhost:8000/auth/HomePage/profile">
+        </li>
+
+        <li class="nav-item">
+          <form class="d-flex" role="search">
             <div>
-              <div>Chỉnh sửa hồ sơ </div>
+              <!-- <ion-icon class="icon_search"name="search"></ion-icon> -->
+              <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search" />
             </div>
+          </form>
+        </li>
+
+        <li class="nav-item icon-navbar icon_navbar icon-navbar_thongbao">
+          <a class="nav-link active" aria-current="page" href="#">
+            <ion-icon name="notifications-outline" class="fontsize-navbar"></ion-icon>
+            <!-- Thông báo -->
+          </a>
+          <div class="thongbao">Thông báo</div>
+        </li>
+        <li class="nav-item icon-navbar icon_navbar icon-navbar_tinnhan">
+          <a class="nav-link" href="#">
+            <ion-icon class="fontsize-navbar" name="chatbubble-ellipses-outline"></ion-icon>
+            <!-- Tin nhắn -->
+          </a>
+          <div class="tinnhan">Tin nhắn</div>
+        </li>
+        <li id="click-per" class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
+          <a class="nav-link active" aria-current="page"
+            href="http://localhost:8000/auth/HomePage/PersionalPage/<%=dataCreated.id %>">
+            <img style="border-radius: 50px; width: 40px; height: 40px" src="<%=dataCreated.avatar %>" alt="" />
+          </a>
+          <div class="hoso">Hồ sơ của bạn</div>
+        </li>
+
+        <li class="nav-item dropdown all">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- tài khoản và các tuỳ chọn khác -->
           </a>
 
-        </div>
-        <div class="created-screen">
-          <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created">
-            <p >Đã tạo</p>
-            <div>
-
-            </div>
-          </a>
-          <a href="http://localhost:8000/auth/HomePage/PersionalPage" class="created1">
-            <p >Đã lưu</p>
-            <div>
-
-            </div>
-          </a>
-        </div>
-        <div class="created-screen Ghim-ytuong">
-            <h2> Truyền cảm hứng bằng một Ghim ý tưởng</h2>
-            
-        </div>
-        <div class="created-screen ">
-    
-            <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated" class="created created-color">
-              <p >Tạo</p>
-              <div>
-  
-              </div>
-            </a>
-        </div>
-        
-      </div>
-      
+          <ul style="border-radius: 16px; width: 360px; left: -300px" class="dropdown-menu">
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" id="click-per" href="#">
+                <div style="display: flex">
+                  <div class="avatar">
+                    <img class="img-avatar" src="<%=dataCreated.avatar %>" alt="" />
+                  </div>
+                  <div>
+                    <div class="account-name">
+                      <h6>
+                        <%=dataCreated.username %>
+                      </h6>
+                      <div>Cá nhân</div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li style="
+                margin-left: 6px;
+                font-size: 12px;
+                margin-left: 22px;
+                margin-top: 20px;
+              ">
+              Tài khoản của bạn
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Thêm tài khoản</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Chuyển đổi thành tài khoản doanh nghiệp</h6>
+              </a>
+            </li>
+            <li style="
+                margin-left: 6px;
+                font-size: 12px;
+                margin-left: 22px;
+                margin-top: 20px;
+              ">
+              Tuỳ chọn khác
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item"
+                href="http://localhost:8000/auth/HomePage/profile">
+                <h6>Cài đặt</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Điều chỉnh bảng tin nhà của bạn</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Cài đặt ứng dụng Chrome</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Quyền riêng tư của bạn</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Nhận trợ giúp</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                <h6>Xem điều khoản và quyền riêng tư</h6>
+              </a>
+            </li>
+            <li style="margin-left: 6px">
+              <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="http://localhost:8000/auth">
+                <h6>Đăng xuất</h6>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-   
-  </main>
+  </div>
+</nav>
+
+<!-- end-nabar -->
+
+<!-- container -->
+
+<main>
+  <div class="container1">
+    <div class="profile">
+      <div class="avatar-profile"><img class="img-profile" src="<%=dataCreated.avatar %>" alt=""></div>
+      <div class="infor-profile">
+        <h1 class="name-profile">
+          <%=dataCreated.username %>
+        </h1>
+        <p class="name-link">@<%=dataCreated.fistname %>
+            <%=dataCreated.lastname %>
+        </p>
+        <p class="total-follow"> 1.000.000.000 lượt theo dõi</p>
+      </div>
+      <div class="share-change">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <!-- chiase -->
+          <li class="nav-item dropdown dropdown-all_share">
+
+            <a class="nav-link share-change__share" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Chia sẻ
+            </a>
+            <%- include('share'); -%>
+          </li>
+        </ul>
+        <a class="btn_change" id="id-profile" href="#">
+          <div>
+            <div>Chỉnh sửa hồ sơ </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="created-screen">
+        <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated/<%=dataCreated.id %>" class="created">
+          <p>Đã tạo</p>
+          <div>
+
+          </div>
+        </a>
+        <a href="http://localhost:8000/auth/HomePage/PersionalPage/<%=dataCreated.id %>" class="created1">
+          <p>Đã lưu</p>
+          <div>
+
+          </div>
+        </a>
+      </div>
+      <div class="created-screen Ghim-ytuong">
+        <h2> Truyền cảm hứng bằng một Ghim ý tưởng</h2>
+
+      </div>
+      <div class="created-screen ">
+
+
+        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+          style="border-radius: 99px; background-color: rgb(195, 0, 0); color: aliceblue; border: 0px; font-size: 18px; width: 80px;height: 40px;margin-top: 50px;">
+          Tạo
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<div id="containerz">
+  <form id="form-uploadphoto" method="post" enctype="multipart/form-data">
+    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content formLogIn">
+          <div class="modal-header">
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h2 style="text-align: center;">Thêm ảnh của bạn</h2>
+              <div class=" titleEmail" style=" margin-left: 21%; 
+              font-size: 15px;
+              margin-top: 30px;
+              padding-left: 5px;
+              margin-bottom: 5px;">
+                Tên ảnh
+              </div>
+              <input style=" margin: auto;
+              height: 50px;
+              width: 60%;
+              border-radius: 20px;
+              margin-left: 20%;
+              border: 1px solid rgb(255, 255, 255);
+              outline: 1px solid rgb(11, 227, 255);
+              padding-left: 18px;" type="text" name="namephoto" id="userEmail" placeholder="Tên ảnh" />
+              <input style="margin-left:20% ; padding: 20px;" type="file" name="imagephoto" value="">
+            </div>
+            <button
+              style="border-radius: 99px; background-color: rgb(195, 0, 0); color: aliceblue; border: 0px; font-size: 18px; width: 130px;height: 40px; margin-top: 50px; margin-left: 33%;"
+              id="uploadphoto-btn">Upload</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
 
     "></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="/js/PersionalPage.js"></script>
-  </body>
+
+<script src="/js/PersionalPage.js"></script>
+</body>
 
 </html>

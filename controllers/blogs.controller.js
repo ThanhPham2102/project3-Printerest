@@ -10,7 +10,7 @@ let strongRegex = new RegExp(
 // admin
 module.exports.getAllBlogs = (req, res) => {
   let { page_size_blogs, page_index_blogs } = req.query;
-  console.log(page_size_blogs, page_index_blogs);
+  // console.log(page_size_blogs, page_index_blogs);
   page_index_blogs = Number(page_index_blogs) || 1;
   page_size_blogs = Number(page_size_blogs) || 10;
   let total = 0;
@@ -24,7 +24,7 @@ module.exports.getAllBlogs = (req, res) => {
     .then((data) => {
       //   console.log(data);
       let [rows, cols] = data;
-      console.log(rows);
+      // console.log(rows);
       res.render("photoPinterest", {
         rows,
         total,
@@ -59,7 +59,6 @@ module.exports.getOneBlogs = (req, res) => {
 
   db.execute("SELECT * FROM tbl_photopint WHERE user_id =?", [userId]) //so sánh với id trong db
     .then((data) => {
-      console.log(data);
       let [rows] = data;
       res.status(200).json({
         data: rows, //show ra toan bo anh co chua user_id giong nhau la mot mang
@@ -80,7 +79,6 @@ module.exports.getOnePhoto = (req, res) => {
 };
 //CreatBlogs
 module.exports.creatBlogs = (req, res) => {
-  console.log("creatBlogs");
   let { title, content } = req.body;
   let { userId } = req.params;
   // let { title, password\\\ } = req.body;//lấy email và password vào để kiểm tra
@@ -114,7 +112,6 @@ module.exports.creatBlogs = (req, res) => {
 
 //update blogs
 module.exports.updateBlogs = (req, res) => {
-  console.log("updateBlogs");
   let { id } = req.params;
   let { title, content, img } = req.body;
   db.execute("UPDATE tbl_photopint SET title = ?,content =?,img=? WHERE id=?", [
@@ -124,7 +121,6 @@ module.exports.updateBlogs = (req, res) => {
     id,
   ])
     .then((data) => {
-      //   console.log(data);
       res.status(200).json({
         message: "update one successfully",
       });
@@ -151,7 +147,7 @@ module.exports.getBlogsByUserId = (req, res) => {
     .then((data) => {
       let [rows] = data;
       let renderData = _.chunk(rows, 3);
-      console.log(rows);
+
       res.render("PersionalPage.ejs", {
         data: renderData,
       });

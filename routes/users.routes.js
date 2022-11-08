@@ -17,10 +17,12 @@ router.get("/:id", userController.getOne);
 // Create one by id
 router.post("/", userController.CreateUser);
 // Update one by id
-router.put("/:id", userController.UpdateUser);
+router.put("/:id", userController.profileUpdateUser);
 // Delete one by id
-router.delete("/:id",
-//  requireAdmin, 
-userController.DeleteUser); //admin
+router.delete(
+  "/:id",
+  //  requireAdmin,
+  userController.DeleteUser
+); //admin
 
 module.exports = router;
