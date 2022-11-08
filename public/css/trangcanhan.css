@@ -522,13 +522,13 @@ img {
   max-height: 40vh;
   padding: 30px 50px;
 } */
-<style>
-body {
+
+/* body {
   background-color: #434c50;
   min-height: 100vh;
   font: normal 16px sans-serif;
   padding: 40px 0;
-}
+} */
 
 /* .container.gallery-container {
   background-color: #fff;
@@ -613,7 +613,7 @@ body {
     padding: 0;
   }
 }
-</style>
+
 /* .container4{
   padding-top: -100px;
 } */

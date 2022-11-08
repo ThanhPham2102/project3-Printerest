@@ -79,23 +79,13 @@
             </a>
             <div class="tinnhan">Tin nhắn</div>
           </li>
-          <li
-          id="click-per"
-          class="nav-item icon-navbar icon_navbar icon-navbar__hoso"
-        >
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id%>"
-          >
-            <img
-              style="border-radius: 50px; width: 40px; height: 40px"
-              src="<%=data.avatar%>"
-              alt=""
-            />
-          </a>
-          <div class="hoso">Hồ sơ của bạn</div>
-        </li>
+          <li id="click-per" class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
+            <a class="nav-link active" aria-current="page"
+              href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id%>">
+              <img style="border-radius: 50px; width: 40px; height: 40px" src="<%=data.avatar%>" alt="" />
+            </a>
+            <div class="hoso">Hồ sơ của bạn</div>
+          </li>
 
           <li class="nav-item dropdown all">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -214,12 +204,12 @@
           <p class="profile-title">Ảnh</p>
           <div class="profile-img">
             <div class="profile-imgmy">
-              <img src="<%=data.avatar%>"
-                style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;" alt="">
+              <img src="<%=data.avatar%>" style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;"
+                alt="">
             </div>
             <!--gắn lại sự kiện  -->
             <div class="profile-imgbutton">
-              <p class="profile-imgtitle"> Thay đổi</p>
+              <input type="file" class="form-control" id="image" placeholder="file" name="image" />
             </div>
             <!--  -->
           </div>
