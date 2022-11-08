@@ -39,7 +39,7 @@ module.exports.getAllBlogs = (req, res) => {
 module.exports.getAllPhotos = (req, res) => {
   db.execute(
     `
-  SELECT a.*, b.email,b.user_name,b.avatar
+  SELECT a.*, b.email,b.username,b.avatar
   FROM 
   tbl_photopint AS a,
   tbl_userpint AS b
