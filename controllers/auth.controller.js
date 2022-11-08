@@ -341,3 +341,50 @@ module.exports.profileUpdate = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+module.exports.uploadPhoto = (req, res) => {
+  let { id } = req.params;
+
+  // console.log(`id`, id);
+  // let { avatar } = req.body;
+
+  db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id])
+    .then((data) => {
+      // console.log(data);
+      let [rows] = data[0];
+      // console.log(rows);
+      console.log(req.body.namephoto);
+      let img = req.file.filename;
+      console.log(img);
+      // console.log(id);
+      let user_id = rows.id;
+      // console.log(user_id);
+      let img_url = `http://localhost:8000/asset/${img}`;
+      let id = Math.floor(Math.random() * 1000000);
+
+      let photo_name = req.body.namephoto;
+      let created_at = "2022-01-01 00:00:00";
+      db.execute("INSERT INTO tbl_photopint VALUES(?, ?, ?, ?, ?)", [
+        id,
+        photo_name,
+        img_url,
+        created_at,
+        user_id,
+      ]) //so sánh với id trong db
+        .then((data) => {
+          let id = req.params.id;
+          db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
+            .then((data) => {
+              console.log(data[0][0]);
+              // let [rows] = data;
+              let dataCreated = data[0][0];
+              res.render("PersionalPageCreadted.ejs", {
+                dataCreated,
+              });
+            })
+            .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+};

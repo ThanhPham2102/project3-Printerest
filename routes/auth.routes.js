@@ -2,11 +2,26 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
+const uploadController = require("../controllers/upload.controller");
 const {
   requireAuth,
   requirePer,
   requireHome,
 } = require("../middlewares/auth.middleware");
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/asset");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix =
+      Date.now() + "-" + Math.round(Math.random() * 1e9) + ".jpg";
+    cb(null, file.fieldname + "-" + uniqueSuffix);
+  },
+});
+
+const upload = multer({ storage: storage });
 //lay thong tin o duong dan ve
 router.get("/", authController.renderLogin);
 router.get("/signup", authController.renderRegister);
@@ -41,6 +56,11 @@ router.get(
   "/HomePage/PersionalPageCreated/:id",
   authController.persionalpagecreated
 );
+router.post(
+  "/HomePage/PersionalPageCreated/:id",
+  upload.single("imagephoto"),
+  authController.uploadPhoto
+);
 
 router.put("/HomePage/profile/:id", authController.profileUpdate);
 
@@ -50,5 +70,12 @@ router.put("/HomePage/profile/:id", authController.profileUpdate);
 
 // admin
 // router.get("/Admin/user", authController.profile);
+
+router.get("/HomePage/profile/:id", uploadController.printUploadForm);
+router.post(
+  "/HomePage/profile/:id",
+  upload.single("image"),
+  uploadController.uploadAvatar
+);
 
 module.exports = router;
