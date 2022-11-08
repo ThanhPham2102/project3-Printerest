@@ -17,7 +17,7 @@ window.onload = function () {
           imagesID.push(array[i]);
         }
       }
-      console.log(imagesID);
+      // console.log(imagesID);
       let images = [];
       for (let i = 0; i < imagesID.length; i++) {
         images.push(imagesID[i].img_url);
@@ -34,7 +34,7 @@ window.onload = function () {
           user_name: imagesID[i].username,
           avatar: imagesID[i].avatar,
         };
-        console.log(item);
+        // console.log(item);
         posts.push(item);
         imageIndex++;
         if (imageIndex > images.length - 1) imageIndex = 0;
@@ -129,7 +129,7 @@ const clickPer = document.getElementById("id-profile");
 
 clickPer.onclick = (e) => {
   e.preventDefault();
-  console.log(window.location.href.split("/"));
+  // console.log(window.location.href.split("/"));
   let id = window.location.href.split("/")[6];
   window.location.href = `/auth/HomePage/profile/${id}`;
 };

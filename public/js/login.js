@@ -176,6 +176,7 @@ formlogup.addEventListener("submit", (e) => {
           },
         });
       }
+
       if (data.status === "created successfully") {
         Swal.fire({
           icon: "success",
@@ -272,6 +273,12 @@ formlogin.addEventListener("submit", (e) => {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
+      }
+      if (
+        (email === "phongdh2001@gmail.com") &
+        (password === "Phong@88Admin")
+      ) {
+        window.location.href = `/users`;
       }
       if (data.status === "success") {
         window.location.href = `/auth/HomePage`;

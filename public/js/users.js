@@ -16,7 +16,7 @@ const showMessage = (status, message) => {
 };
 
 tbody.addEventListener("click", (e) => {
-  // xoá dữ liệu 
+  // xoá dữ liệu
   if (e.target.classList.contains("btn-delete")) {
     let id = e.target.id;
     fetch(baseApi + `users/${id}`, {
@@ -28,14 +28,13 @@ tbody.addEventListener("click", (e) => {
       .then((data) => {
         showMessage("delete", data.message);
         e.target.parentElement.parentElement.remove();
-       
       })
       .catch((err) => {
         showMessage("delete", err.message);
       });
   }
 
-// update dữ liệu
+  // update dữ liệu
   if (e.target.classList.contains("btn-update")) {
     let id = e.target.id.split("-")[1];
     let td = e.target.parentElement.parentElement;
@@ -84,16 +83,15 @@ tbody.addEventListener("click", (e) => {
     </tr>
     `;
   }
-// SAVE dữ liệu
+  // SAVE dữ liệu
   if (e.target.classList.contains("btn-save")) {
-    
     let id = e.target.id.split("-")[1];
     let td = e.target.parentElement.parentElement;
- 
+
     let tdChildList = e.target.parentElement.parentElement.children;
-  
 
     let info = {
+      index: tdChildList[0].innerHTML,
       id: tdChildList[1].innerHTML,
       email: tdChildList[2].innerHTML,
       password: tdChildList[3].innerHTML,
@@ -120,7 +118,6 @@ tbody.addEventListener("click", (e) => {
     })
       .then((res) => res.json())
       .then((data) => {
-      
         showMessage("update", data.message);
         // DOM để đổi lại dòng hiện tại thành một dòng bình thường không có
         // input nằm ở bên trong nữa
@@ -169,13 +166,3 @@ window.onload = function () {
   pages.shift();
   // pages[activePage - 1].classList.add("active");
 };
-
-
-
-
-
-
-
-
-
-

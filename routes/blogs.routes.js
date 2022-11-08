@@ -23,4 +23,5 @@ router.post("/", blogsController.creatBlogs);
 router.put("/:id", blogsController.updateBlogs);
 // // Delete one by id
 router.delete("/:id", blogsController.deleteBlogs);
+
 module.exports = router;
