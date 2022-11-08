@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+Display:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Pinterest</title>
+</head>
+
+<body>
+
+
+    <div class="containar">
+        <div class="taskLogInUp">
+            <nav class="navbar navbar-expand-lg bg-light containar">
+
+                <div class="container-fluid">
+
+                    <a class="navbar-brand" href="http://localhost:8000/auth/" style="  display: flex;"> <img
+                            class="imgPint"
+                            src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+                            alt="http://localhost:8000/auth/">
+                        <a href="" style="text-decoration: none;">
+                            <h5 style="color: rgb(187, 0, 0); margin-left: 10px; margin-top: 8px;">Pinterest</h5>
+                        </a>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+                        <span class="navbar-text">
+                            <a class="navbar-brand titleNar" href="#">Giới Thiệu</a>
+                            <a class="navbar-brand titleNar" href="#">Doanh nghiệp</a>
+                            <a class="navbar-brand titleNar" href="#">Blog</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                style="border-radius: 99px; background-color: rgb(195, 0, 0); color: aliceblue; border: 0px; font-size: 18px; width: 130px;height: 40px;">
+                                Đăng nhập
+                            </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                style="border-radius: 99px; background-color: rgb(210, 210, 210); color: rgb(0, 0, 0); border: 0px; font-size: 18px; width: 130px; height: 40px; ">
+                                Đăng Ký
+                            </button>
+
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div id="containerz">
+        <form id="login-form">
+            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content formLogIn">
+                        <div class="modal-header">
+                            <img class="imgPint"
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+                                alt="">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="titlepublic">Chào mừng bạn đến với</h3>
+                            <h3 class="titlepublic"> Pinterest</h3>
+                            <div id="form_id" method="post" name="myform">
+                                <div class=" titleEmail">Email
+                                </div>
+                                <input type="email" name="email" id="userEmail" placeholder="Email" />
+                                <div id="errEmail"></div>
+                                <div class="titlePass">Mật khẩu</div>
+                                <input type="password" name="password" id="password" placeholder="Mật khẩu" />
+                                <div id="errEmail"></div>
+                                <div class="quenMk"><a id="quenMk" href="http://localhost:8000/auth/resetpass/">Quên mật
+                                        khẩu?</a></div>
+                                <button id="btn_signIn">Đăng nhập</button>
+                                <h5 class="or">Hoặc</h5>
+                                <button id="btn_signinFakeBook">
+                                    <div class="iconFace1">
+                                        <ion-icon class="iconFace" name="logo-facebook"></ion-icon>
+                                    </div>
+                                    <div class="titleFace">
+                                        Tiếp tục với Facebook
+                                    </div>
+                                </button>
+                                <button id="btn_signinGoogle">
+                                    <div class="titleGoogle">
+                                        <img style="height: 40px; width:40px;"
+                                            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                                            alt="">
+                                        <span> Tiếp tục truy cập Google</span>
+                                    </div>
+                                </button>
+                                <div class="titleLogIn">
+                                    <div class="titleDk">Bằng cách tiếp tục, bạn đồng ý với</div>
+                                    <div class="titleDk">
+                                        <a class="titleDKdv" href="#">Điều khoản dịch vụ</a>
+                                        của Pinterest và xác nhận rằng
+                                    </div>
+                                    <div class="titleDk">bạn đã đọc
+                                        <a class="titleDKdv" href="#">Chính sách Quyền riêng tư</a>
+                                        của chúng tôi
+                                    </div>
+                                    <div class="abcccc"
+                                        style="width : 200px; border-top: 1px solid red; margin: auto; margin-top: 15px;">
+                                    </div>
+                                    <div class="titleDky1">
+                                        <a class="titleDKdv1" href="#">Chưa tham gia Pinterest? Đăng ký</a>
+
+                                        <div><a class="titleDKdv2">Bạn là doanh nghiệp? Hãy bắt đầu tại đây!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="containerx">
+        <form id="logup-form">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content formLogUn">
+                        <div class="modal-header">
+                            <img class="imgPint"
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+                                alt="">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="titlepublic">Chào mừng bạn đến với</h3>
+                            <h3 class="titlepublic"> Pinterest</h3>
+                            <div id="form_id" method="post" name="myform">
+                                <div class=" titleEmail">
+                                    Email
+                                </div>
+                                <input type="email" name="email" id="userEmail" placeholder="Email" />
+                                <div class="titlePass">Mật khẩu</div>
+                                <input type="password" name="password" id="password" placeholder="Tạo mật khẩu" />
+                                <div class="titlePass">Tên người dùng</div>
+                                <input type="text" name="username" id="username" placeholder="Tên người dùng" />
+                                <div class="titlePass">Tuổi</div>
+                                <input type="number" name="age" id="userAge" placeholder="Tuổi" />
+                                <button id="btn_signUp">Tiếp tục</button>
+                                <h5 class="or">Hoặc</h5>
+                                <button id="btn_signinFakeBook">
+                                    <div class="iconFace1">
+                                        <ion-icon class="iconFace" name="logo-facebook"></ion-icon>
+                                    </div>
+                                    <div class="titleFace">
+                                        Tiếp tục với Facebook
+                                    </div>
+                                </button>
+                                <button id="btn_signinGoogle">
+                                    <div class="titleGoogle">
+                                        <img style="height: 40px; width:40px;"
+                                            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                                            alt="">
+                                        <span> Tiếp tục truy cập Google</span>
+                                    </div>
+                                </button>
+                                <div class="titleLogIn">
+                                    <div class="titleDk">Bằng cách tiếp tục, bạn đồng ý với</div>
+                                    <div class="titleDk">
+                                        <a class="titleDKdv" href="#">Điều khoản dịch vụ</a>
+                                        của Pinterest và xác nhận rằng
+                                    </div>
+                                    <div class="titleDk">bạn đã đọc
+                                        <a class="titleDKdv" href="#">Chính sách Quyền riêng tư</a>
+                                        của chúng tôi
+                                    </div>
+                                    <div class="titleDky1">
+                                        <a class="titleDKdv1" href="#">Bạn đã là thành viên? Đăng nhập</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <a href="#" class="signUpDn">Tạo tài khoản doanh nghiệp miễn phí</a>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
+    "></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/login.js"></script>
+
+</body>
+
+</html>

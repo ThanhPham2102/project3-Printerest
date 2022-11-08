@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <title>Trang cá nhân</title>
+  <!-- modal -->
+  <!--  -->
+  <link rel="stylesheet" href="/css/trangcanhan.css">
+  <link rel="stylesheet" href="/css/showpicture.css">
+</head>
+
+<!-- navbar -->
+<%- include('navbar'); -%>
+  <!-- end-nabar -->
+
+  <!-- container -->
+
+  <main>
+    <div class="container1">
+      <!-- <ul class="list-group profile">
+            <li class="list-group-item img-avatar"><div class="image-avatar-profile"><img class ="img-profile" src="https://i.pinimg.com/736x/e5/5e/c6/e55ec644366ebfd5331d5f2bdff933e9--voi-japan-girl.jpg"alt=""></div></li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul> -->
+
+
+      <div class="profile">
+        <div class="avatar-profile"><img class="img-profile" src="<%=data.avatar %>" alt=""></div>
+        <div class="infor-profile">
+          <h1 class="name-profile">
+            <%=data.fistname%>
+              <%=data.lastname%>
+          </h1>
+          <p class="name-link">@<%=data.fistname %>
+              <%=data.lastname %>
+          </p>
+          <p class="name-link">
+            @<%=data.username %>
+          </p>
+          <p class="total-follow"> 1000 lượt theo dõi</p>
+        </div>
+        <div class="share-change">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <!-- chiase -->
+            <li class="nav-item dropdown dropdown-all_share">
+
+              <a class="nav-link share-change__share" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Chia sẻ
+              </a>
+              <%- include('share'); -%>
+
+            </li>
+          </ul>
+          <a class="btn_change" id="id-profile" href="#">
+            <div>
+              <div>Chỉnh sửa hồ sơ </div>
+            </div>
+          </a>
+
+        </div>
+
+
+        <div class="created-screen">
+          <a href="http://localhost:8000/auth/HomePage/PersionalPageCreated/<%=data.id %>" class="created">
+            <p>Đã tạo</p>
+            <div>
+
+            </div>
+          </a>
+          <a href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id %>" class="created1">
+            <p>Đã lưu</p>
+            <div>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="container3">
+      <div class="sapxep">
+
+        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <ion-icon style="width: 30px;height: 30px;" name="swap-horizontal-outline"></ion-icon>
+        </a>
+
+        <ul style="border-radius: 16px;width: 300px;left: -300px;" class="dropdown-menu">
+          <li style="margin-left: 6px;">
+            <a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+
+
+            </a>
+          </li>
+          <li style="margin-left: 6px;font-size: 12px;margin-left: 22px;margin-top: 20px;">Sắp xếp theo</li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Từ A đến Z</h6>
+            </a></li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Tuỳ Chỉnh</h6>
+            </a></li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Đã lưu lần cuối vào</h6>
+            </a></li>
+          <li style="margin-left: 6px;font-size: 12px;margin-left: 22px;margin-top: 20px">Bố cục hồ sơ</li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Chỉnh sửa chế độ hiển thị bảng</h6>
+            </a></li>
+
+
+
+        </ul>
+      </div>
+      <div class="sapxep">
+
+        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- tài khoản và các tuỳ chọn khác -->
+          <ion-icon style="width: 30px;height: 30px;" name="add-outline"></ion-icon>
+        </a>
+
+        <ul style="border-radius: 16px;width: 180px;left: -300px;" class="dropdown-menu">
+          <li style="margin-left: 6px;">
+            <a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+
+
+            </a>
+          </li>
+          <li style="margin-left: 6px;font-size: 12px;margin-left: 22px;margin-top: 10px;">Tạo</li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Ghim</h6>
+            </a></li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Pin ý tưởng</h6>
+            </a></li>
+          <li style="margin-left: 6px;"><a style="border-radius: 8px;width: 98%;" class="dropdown-item" href="#">
+              <h6>Bảng</h6>
+            </a></li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Bộ sưu tập -->
+    
+      <div class="container44 row" >
+        <% for( let i = 0; i < renderData.length; i++ ) { %>
+     
+        
+      
+          <% for( let j = 0; j < renderData[i].length; j++ ) { %>
+       
+            <div class="all_colections col-3 <%=renderData[i].collection_name%>">
+              
+            
+        <div class="one_collection <%=renderData[i].collection_name%>"> 
+        
+          <div style="width: 400px" class="container44 gallery-container">
+          <div class="tz-gallery" style="max-height: 200px;overflow-y:scroll">
+            <div class="row" >
+              <div class="col-sm-12 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                    alt="Bridge"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                    alt="Park"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                    alt="Tunnel"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                    alt="Traffic"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                    alt="Coast"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                    alt="Rails"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg"
+                    alt="Bridge"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg"
+                    alt="Park"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg"
+                    alt="Tunnel"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/traffic.jpg"
+                    alt="Traffic"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/rails.jpg"
+                    alt="Coast"
+                  />
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a
+                  class="lightbox"
+                  href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                >
+                  <img
+                    src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg"
+                    alt="Rails"
+                  />
+                </a>
+              </div>
+                
+            </div>
+           
+          </div>
+        </div>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script> -->
+        <!-- <script>
+          baguetteBox.run(".tz-gallery");
+        </script> -->
+        <div style="padding-left: 20px;margin-top: 0px;"><a class="title-tatal__ghim" href=""><%= renderData[i][j].collection_name %></a>
+          <div class="time_ghimted">
+            <p class="total_ghimted"><%= renderData[i][j].amount %></p>
+            <p style="color: rgb(109, 108, 108);">1 vạn năm trước</p>
+          </div>
+        </div>
+      </div>
+            </div>
+            <% } %>
+            <% } %>
+  
+  
+        
+      
+
+
+    
+       </div>
+     <!-- end-bo suu tap -->
+
+
+
+
+
+
+
+
+    </div>
+    <div class="line-bottom"></div>
+
+
+    <!-- container3 -->
+    <div class="container3">
+      <div>
+        <div class="title-ghim"> Ý tưởng chưa sắp xếp</div>
+      </div>
+      <div class="modal-black">
+        <!--  -->
+        <button type="button" class="btn btn-primary btn-sapxep" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Sắp xếp
+        </button>
+        <!--  -->
+
+      </div>
+    </div>
+    <div class="container4">
+     
+    </div>
+
+  </main>
+
+
+  <!-- Modal -->
+  <div class="modal fade modal-sapxep" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header header-modal">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Sắp xếp thành một bảng</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+              <div class="col-3">
+                <div class="img-modal"><img class="img-modal__body"
+                    src="https://i.ytimg.com/vi/zI0RaF4jsy8/maxresdefault.jpg" alt=""></div>
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-footer footer-modal">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary">Tiếp theo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end madal -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
+
+    "></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+  <script src="/js/PersionalPage.js"></script>
+  </body>
+
+</html>

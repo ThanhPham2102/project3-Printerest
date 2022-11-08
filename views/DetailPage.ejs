@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+  <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+
+  <title>Printerset</title>
+  <!-- modal -->
+  <!--  -->
+  <link rel="stylesheet" href="/css/chitiet.css" />
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-light header_nav">
+    <div class="container-fluid">
+      <a
+        class="navbar-brand"
+        href="http://localhost:8000/auth/HomePage"
+        style="display: flex"
+      >
+        <img
+          class="imgPint"
+          src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+          alt="http://localhost:8000/auth/"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" style="margin-right: 30px">
+            <a
+              class="nav-link trangchu"
+              aria-current="page"
+              href="http://localhost:8000/auth/HomePage"
+            >
+              <h6 style="width: 80px;">Trang chủ</h6>
+            </a>
+          </li>
+  
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle navbar-tao"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Tạo
+            </a>
+            <ul class="dropdown-menu dropdown_menu_tao">
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  Tạo Ghim ý Tưởng</a
+                >
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                  >Tạo Ghim</a
+                >
+              </li>
+            </ul>
+          </li>
+  
+          <li class="nav-item">
+            <form class="d-flex" role="search">
+              <div>
+                <!-- <ion-icon class="icon_search"name="search"></ion-icon> -->
+                <input
+                  class="form-control me-2 search_input"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </div>
+            </form>
+          </li>
+  
+          <li class="nav-item icon-navbar icon_navbar icon-navbar_thongbao">
+            <a class="nav-link active" aria-current="page" href="#">
+              <ion-icon
+                name="notifications-outline"
+                class="fontsize-navbar"
+              ></ion-icon>
+              <!-- Thông báo -->
+            </a>
+            <div class="thongbao">Thông báo</div>
+          </li>
+          <li class="nav-item icon-navbar icon_navbar icon-navbar_tinnhan">
+            <a class="nav-link" href="#">
+              <ion-icon
+                class="fontsize-navbar"
+                name="chatbubble-ellipses-outline"
+              ></ion-icon>
+              <!-- Tin nhắn -->
+            </a>
+            <div class="tinnhan">Tin nhắn</div>
+          </li>
+          <li class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="http://localhost:8000/auth/HomePage/PersionalPage/<%=signedUser[0].id%>"
+              > 
+                <img style="width:40px;height:40px;border-radius: 50px; " class="img-avatar" src="<%=signedUser[0].avatar%>" alt="" />
+              </a
+            >
+            <div class="hoso">Hồ sơ của bạn</div>
+          </li>
+  
+          <li class="nav-item dropdown all">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <!-- tài khoản và các tuỳ chọn khác -->
+            </a>
+  
+            <ul
+              style="border-radius: 16px; width: 360px; left: -300px"
+              class="dropdown-menu"
+            >
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  id="click-profile"
+                  href="http://localhost:8000/auth/HomePage/PersionalPage/<%=signedUser[0].id%>"
+                >
+                  <div style="display: flex">
+                    <div class="avatar">
+                      <img class="img-avatar" src="<%=signedUser[0].avatar%>" alt="" />
+                    </div>
+                    <div>
+                      <div class="account-name">
+                        <h6 style="font-size: 20px;"><%=signedUser[0].fistname%> <%=signedUser[0].lastname%></h6>
+                        <div>Cá nhân</div>
+                        <div><%= signedUser[0].email %></div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                style="
+                  margin-left: 6px;
+                  font-size: 12px;
+                  margin-left: 22px;
+                  margin-top: 20px;
+                "
+              >
+                Tài khoản của bạn
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Thêm tài khoản</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Chuyển đổi thành tài khoản doanh nghiệp</h6>
+                </a>
+              </li>
+              <li
+                style="
+                  margin-left: 6px;
+                  font-size: 12px;
+                  margin-left: 22px;
+                  margin-top: 20px;
+                "
+              >
+                Tuỳ chọn khác
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="http://localhost:8000/auth/HomePage/profile"
+                >
+                  <h6>Cài đặt</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Điều chỉnh bảng tin nhà của bạn</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Cài đặt ứng dụng Chrome</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Quyền riêng tư của bạn</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Nhận trợ giúp</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <h6>Xem điều khoản và quyền riêng tư</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a
+                  style="border-radius: 8px; width: 98%"
+                  class="dropdown-item"
+                  href="http://localhost:8000/auth"
+                >
+                  <h6>Đăng xuất</h6>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- container -->
+    <main>
+      <div class="container2">
+        <a class="nav-link" href="http://localhost:8000/auth/HomePage" role="button" aria-expanded="false">
+          <button class="btn-backhome">
+            <!-- tài khoản và các tuỳ chọn khác -->
+            <ion-icon style="width: 30px" name="arrow-back-outline"></ion-icon>
+          </button>
+        </a>
+        <div class="container">
+          <div class="body d-md-flex align-items-center justify-content-between">
+            <!-- img -->
+            <div class="box-1 mt-md-0 mt-5">
+              <img
+                src="<%= data[0].img_url %>"
+                class="" alt="" />
+            </div>
+
+            <!-- noidung -->
+            <div class="box-2 d-flex flex-column h-100">
+              <!-- header-trang chi tiet -->
+              <div class="header-trangchitiet">
+                <!-- share-chose -->
+                <div class="share-chooseOther">
+                  <div class="share-header_trangchitiet">
+                    <a class="nav-link share-change__share" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <ion-icon class="iconshare-trangcchitiet" name="share-outline"></ion-icon>
+                    </a>
+                    <!-- share.ejs -->
+                    <%- include('share'); -%>
+                      <!-- endshare -->
+                  </div>
+                  <div class="chooseOther">
+                    <a class="nav-link navbar-chose" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      ...
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li style="margin-left: 6px">
+                        <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                          Tải hình ảnh xuống</a>
+                      </li>
+                      <li style="margin-left: 6px">
+                        <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                          Ẩn ghim</a>
+                      </li>
+                      <li style="margin-left: 6px">
+                        <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                          Báo cáo Ghim</a>
+                      </li>
+                      <li style="margin-left: 6px">
+                        <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">Nhận mã nhúng Ghim</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- end-share_chose -->
+                <!-- hoso-luu -->
+                <div class="profile-save">
+                  <div class="chooseOther">
+                    <div class="nav-item dropdown all">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Hồ sơ
+                        <!-- tài khoản và các tuỳ chọn khác -->
+                      </a>
+
+                      <ul style="border-radius: 16px; width: 360px; left: -300px" class="dropdown-menu">
+
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                            <h6>Lưu</h6>
+                          </a>
+                        </li>
+
+                        <li style="
+                            margin-left: 6px;
+                            font-size: 12px;
+                            margin-left: 22px;
+                            margin-top: 20px;
+                          ">
+                          Lưu nhanh và sắp xếp lại sau
+                        </li>
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Hồ sơ</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save">
+                                  Lưu
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+                        <li style="
+                            margin-left: 6px;
+                            font-size: 12px;
+                            margin-left: 22px;
+                            margin-top: 20px;
+                          ">
+                          Lưu vào bảng
+                        </li>
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Hay ho</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save">
+                                  Lưu
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+                        <li style="
+                          margin-left: 6px;
+                          font-size: 12px;
+                          margin-left: 22px;
+                          margin-top: 20px;
+                        ">
+                          Đề xuất
+                        </li>
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Túi sách lv</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save1">
+                                  Tạo
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Tạo bảng</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save1">
+                                  Tạo
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Tạo bảng</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save1">
+                                  Tạo
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+                        <li style="margin-left: 6px">
+                          <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="">
+                            <div style="display: flex">
+                              <div class="avatar">
+                                <img class="img-album"
+                                  src="http://1.bp.blogspot.com/-PvdvQ_LCMBg/UCWeepk0CBI/AAAAAAAAA2s/ho65p8h0DwY/s1600/ace1.jpg"
+                                  alt="" />
+                              </div>
+                              <div>
+                                <div class="album-new">
+                                  <h6 class=>Tạo bảng</h6>
+
+
+                                </div>
+
+                              </div>
+                              <div class="">
+                                <div class="album-save1">
+                                  Tạo
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </a>
+                        </li>
+
+
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- <a href="">luu</a> -->
+                  <a class="nav-link btn-save_profile" href="#" role="button" aria-expanded="false">
+                    Lưu
+                  </a>
+                </div>
+                <!--  -->
+              </div>
+              <!-- end header- tranr chi tiet//nên thêm ghi chú cho hình ảnh -->
+              
+              <div class="mt-5">
+                <p class="mb-1 h-1"><%= data[0].photo_name %></p>
+                <p class=""><%= data[0].content %></p>
+                <p class="text-muted mb-2">
+                  <!-- profile -->
+                <div style="margin-left: 6px">
+                  <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="http://localhost:8000/auth/HomePage/PersionalPage/<%= dataUser.id %>">
+                    <div style="display: flex">
+                      <div class="avatar">
+                        <img class="img-avatar"
+                          src="<%= dataUser.avatar %>"
+                          alt="" />
+                      </div>
+                      <div>
+                        <div class="account-name">
+                          <h6 style="font-size: 20px;margin-top:10px"><%= dataUser.username %></h6>
+                          <!-- <div>Cá nhân</div> -->
+                          <div style="font-size: 13px; color:#5e5d5d;">Cả thế giới theo dõi</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <!-- end pro file -->
+                </p>
+                <div class="d-flex flex-column">
+                  <form class="text-muted mb-2"><input
+                      style="width: 100%;height:5vh; border-radius:10px;font-size: 15px;padding-left: 10px;"
+                      placeholder="comment in here..." value=""></form>
+
+                </div>
+                <div class="d-flex flex-column">
+                  <div class="text-muted mb-2">
+                    <!-- comment-in-here -->
+
+                  </div>
+
+                </div>
+              </div>
+            
+              <div class="mt-auto">
+                <p class="footer text-muted mb-0 mt-md-0 mt-4">
+                  By register you agree with our
+                  <span class="p-color me-1">terms and conditions</span>and
+                  <span class="p-color ms-1">privacy policy</span>
+                </p>
+              </div>
+            </div>
+            <!-- <span class="fas fa-times"></span> -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    <script src=""></script>
+</body>
+
+</html>
+
+
