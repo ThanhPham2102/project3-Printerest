@@ -4,6 +4,7 @@ const db = require("../models/db");
 const bcrypt = require("bcrypt");
 var strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,24}$");
 const saltRounds = 10;
+const _ = require("lodash");
 
 module.exports.renderRegister = (req, res) => {
   res.render("login.ejs");
@@ -96,7 +97,7 @@ module.exports.login = (req, res) => {
             .json({ status: "errpass", message: "Wrong password" });
         } else {
           // console.log("hello from passs vaid");
-          res.cookie("email", find.id, { signed: true });
+          res.cookie("id", find.id, { signed: true });
           res.cookie("role", find.role, { signed: true });
           res.status(200).json({
             status: "success",
@@ -299,9 +300,31 @@ module.exports.getPer = (req, res) => {
   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
     .then((data) => {
       let [rows] = data;
-      // console.log(rows[0]);
-      res.render("PersionalPage", {
-        data: rows[0],
+      // console.log("hahahaha", rows[0]);
+      let idCollections = req.params.id;
+      console.log("1111", id);
+      db.execute("SELECT * FROM tbl_collectionpint WHERE user_id =?", [
+        idCollections,
+      ]).then((data1) => {
+        let dataColections = data1[0];
+
+        let renderData = _.chunk(dataColections, 6);
+        
+        let id = req.params.id;
+        db.execute(
+          `SELECT a.id, b.collection_name, c.photo_id, d.img_url, d.photo_name 
+          FROM tbl_userpint as a, tbl_collectionpint as b,tbl_collection_photo as c,tbl_photopint as d 
+          WHERE a.id = b.user_id AND b.id = c.collection_id AND d.id = photo_id;`,
+          [id]
+        ).then((data2) => {
+          let x=data2[0];
+          res.render("PersionalPage", {
+            data: rows[0],
+            renderData,
+            x
+          });
+        });
+        
       });
     })
     .catch((err) => console.log(err));
@@ -341,3 +364,18 @@ module.exports.profileUpdate = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+// render ra ten collection
+
+// module.exports.getCollections = (req, res) => {
+//   let idCollection = req.params.user_id; //lấy id từ param
+//   console.log(idCollection);
+//   db.execute("SELECT * FROM tbl_collectionpint WHERE id =?", [idCollection]) //so sánh với id trong db
+//     .then((data) => {
+//       let [rows] = data;
+//       // console.log(rows[0]);
+//       res.render("PersionalPage", {
+//         data: rows[0],
+//       });
+//     })
+//     .catch((err) => console.log(err));
+// };

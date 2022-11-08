@@ -10,8 +10,8 @@ window.onload = function () {
 
       let imagesID = [];
       let userID = window.location.href.split("/")[6];
-      console.log("userID", userID);
-      console.log("day la mamg", array);
+      // console.log("userID", userID);
+      // console.log("day la mamg", array);
       for (let i = 0; i < array.length; i++) {
         if (Number(userID) === Number(array[i].user_id)) {
           imagesID.push(array[i]);
@@ -125,21 +125,6 @@ window.onload = function () {
       console.log(err);
     });
 };
-
-//////
-// module.exports.getPer = (req, res) => {
-//   let id = req.params.id; //lấy id từ param
-//   db.execute("SELECT * FROM tbl_userpint WHERE id =?", [id]) //so sánh với id trong db
-//     .then((data) => {
-//       let [rows] = data;
-//       // console.log(rows[0]);
-//       res.render("PersionalPage", {
-//         data: rows[0],
-//       });
-//     })
-//     .catch((err) => console.log(err));
-// };
-
 const clickPer = document.getElementById("id-profile");
 
 clickPer.onclick = (e) => {
@@ -148,3 +133,4 @@ clickPer.onclick = (e) => {
   let id = window.location.href.split("/")[6];
   window.location.href = `/auth/HomePage/profile/${id}`;
 };
+// bosutap

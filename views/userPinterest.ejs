@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://seeklogo.com/images/P/pinterest-icon-logo-D4965B6748-seeklogo.com.png"
+    />
     <title>Users Pinterest</title>
     <link
       rel="stylesheet"
@@ -49,23 +51,42 @@
 
   <body>
     <ul class="nav nav-tabs navbar-dark bg-dark">
-        <li class="nav-item">
-            <a class="nav-link active " id="btn-users" aria-current="page"
-                href="http://localhost:8000/admin/users">Users Pinterest</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " id="btn-photo" aria-current="page" href="http://localhost:8000/admin/photo">Photo
-                Pinterest</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " id="btn-collection" aria-current="page"
-                href="http://localhost:8000/admin/collection">Collection Pinterest</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " id="btn-collectionphoto" aria-current="page"
-                href="http://localhost:8000/admin/collectionphoto">Collection Photo Pinterest</a>
-        </li>
-
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          id="btn-users"
+          aria-current="page"
+          href="http://localhost:8000/admin/users"
+          >Users Pinterest</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="btn-photo"
+          aria-current="page"
+          href="http://localhost:8000/admin/photo"
+          >Photo Pinterest</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="btn-collection"
+          aria-current="page"
+          href="http://localhost:8000/admin/collection"
+          >Collection Pinterest</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="btn-collectionphoto"
+          aria-current="page"
+          href="http://localhost:8000/admin/collectionphoto"
+          >Collection Photo Pinterest</a
+        >
+      </li>
     </ul>
 
     <div class="container">
@@ -99,7 +120,6 @@
             </tr>
           </thead>
 
-<<<<<<< HEAD
           <tbody id="tbody">
             <% for( let i=0; i < rows.length; i++ ) { %>
             <tr>
@@ -147,58 +167,6 @@
               </a>
             </li>
             <% } %>
-=======
-
-                <tbody id="tbody">
-                    <% for( let i=0; i < rows.length; i++ ) { %>
-                        <tr>
-                            <th scope="row">
-                                <%= i + 1 %>
-                            </th>
-                            <td>
-                                <%= rows[i].id %>
-                            </td>
-                            <td>
-                                <%= rows[i].email %>
-                            </td>
-                            <td>
-                                <%= rows[i].password %>
-                            </td>
-                            <td>
-                                <%= rows[i].age %>
-                            </td>
-                            <td>
-                                <%= rows[i].fistname %>
-                            </td>
-                            <td>
-                                <%= rows[i].lastname %>
-                            </td>
-                            <td>
-                                <%= rows[i].avatar %>
-                            </td>
-                            <td>
-                                <%= rows[i].dob %>
-                            </td>
-                            <td>
-                                <%= rows[i].website %>
-                            </td>
-                            <td>
-                                <%= rows[i].username %>
-                            </td>
-                            <td>
-                                <%= rows[i].role %>
-                            </td>
-                            <td class="action">
-                                <span id="<%= rows[i].id %>" class="btn-delete btn btn-danger">
-                                    <ion-icon name="trash-outline"></ion-icon>
-                                </span>
-                                <span id="udpate-<%= rows[i].id %>" class="btn-update btn btn-info">
-                                    <ion-icon name="build-outline"></ion-icon>
-                                </span>
-                            </td>
-                        </tr>
-                        <% } %>
->>>>>>> feat/thanh2
 
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
           </ul>

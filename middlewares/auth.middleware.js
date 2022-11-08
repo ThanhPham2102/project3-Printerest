@@ -20,9 +20,9 @@ module.exports.notRequireAuth = (req, res, next) => {
 
 module.exports.requireHome = (req, res, next) => {
   console.log(req.signedCookies.role);
-  console.log(req.signedCookies.email);
+  console.log(req.signedCookies.id);
   if (req.signedCookies.role === "user") {
-    res.redirect(`HomePage/${req.signedCookies.email}`);
+    res.redirect(`HomePage/${req.signedCookies.id}`);
   } else {
     next();
   }
