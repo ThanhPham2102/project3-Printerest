@@ -21,87 +21,249 @@
 
 <body>
   <!-- navbar -->
-  <%- include('navbar'); -%>
-    <!-- container -->
-    <main style="margin-top:50px ; margin-left:30px;">
-      <div class="profilecontainer">
-        <div class="profile">
-          <a href="" class="profile_canhan">Hồ sơ công khai</a>
-          <a href="" class="profile_canhan">Thông tin cá nhân</a>
-          <a href="" class="profile_canhan">Quản lý tài khoản</a>
-          <a href="" class="profile_canhan">Điều chỉnh bảng tin nhà của bạn</a>
-          <a href="" class="profile_canhan">Tài khoản được xác nhận</a>
-          <a href="" class="profile_canhan">Quyền dùng mạng xã hội</a>
-          <a href="" class="profile_canhan">Thông báo</a>
-          <a href="" class="profile_canhan">Quyền riêng tư và dữ liệu</a>
-          <a href="" class="profile_canhan">Bảo mật và đăng nhập</a>
-          <a href="" class="profile_canhan">Nội dung mang thương hiệu</a>
-        </div>
-        <div class="profilemy" id="profilemy">
-          <h1>Hồ sơ công khai</h1>
-          <form id="form-profile">
-            <p>Người truy cập hồ sơ bạn sẽ thấy thông tin sau</p>
-            <p class="profile-title">Ảnh</p>
-            <div class="profile-img">
-              <div class="profile-imgmy">
-                <img src="http://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg"
-                  style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;" alt="">
+  <nav class="navbar navbar-expand-lg bg-light header_nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:8000/auth/HomePage" style="display: flex">
+        <img class="imgPint"
+          src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-pinterest-inkythuatso-01-30-09-00-35.jpg"
+          alt="http://localhost:8000/auth/" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" style="margin-right: 30px">
+            <a class="nav-link trangchu" aria-current="page" href="http://localhost:8000/auth/HomePage">
+              <h6 style="width: 75px;">Trang chủ</h6>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navbar-tao" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Tạo
+            </a>
+            <ul class="dropdown-menu dropdown_menu_tao">
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  Tạo Ghim ý Tưởng</a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">Tạo Ghim</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <form class="d-flex" role="search">
+              <div>
+                <!-- <ion-icon class="icon_search"name="search"></ion-icon> -->
+                <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search" />
               </div>
-              <button class="profile-imgbutton">
-                <p class="profile-imgtitle"> Thay đổi</p>
-              </button>
-            </div>
-            <div class="profile-username">
-              <div class="profile-fistname">
-                <p class="profile-title">Tên</p>
-                <input class="profile-fistnameinput" name="fistname" type="text" value="<%= data.fistname %>"
-                  placeholder="Tên của bạn ">
+            </form>
+          </li>
 
-              </div>
-              <div class="profile-lastname">
-                <p class="profile-title">Họ</p>
-                <input class="profile-fistnameinput" name="lastname" type="text" value="<%= data.lastname %>"
-                  placeholder="Họ của bạn ">
+          <li class="nav-item icon-navbar icon_navbar icon-navbar_thongbao">
+            <a class="nav-link active" aria-current="page" href="#">
+              <ion-icon name="notifications-outline" class="fontsize-navbar"></ion-icon>
+              <!-- Thông báo -->
+            </a>
+            <div class="thongbao">Thông báo</div>
+          </li>
+          <li class="nav-item icon-navbar icon_navbar icon-navbar_tinnhan">
+            <a class="nav-link" href="#">
+              <ion-icon class="fontsize-navbar" name="chatbubble-ellipses-outline"></ion-icon>
+              <!-- Tin nhắn -->
+            </a>
+            <div class="tinnhan">Tin nhắn</div>
+          </li>
+          <li id="click-per" class="nav-item icon-navbar icon_navbar icon-navbar__hoso">
+            <a class="nav-link active" aria-current="page"
+              href="http://localhost:8000/auth/HomePage/PersionalPage/<%=data.id%>">
+              <img style="border-radius: 50px; width: 40px; height: 40px" src="<%=data.avatar%>" alt="" />
+            </a>
+            <div class="hoso">Hồ sơ của bạn</div>
+          </li>
 
-              </div>
-            </div>
-            <div class="profile-story">
-              <p class="profile-title">Giới thiệu</p>
+          <li class="nav-item dropdown all">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- tài khoản và các tuỳ chọn khác -->
+            </a>
 
-              <input class="profile-storyinput" name="dob" type="text" value="<%= data.dob %>"
-                placeholder="Kể câu chuyện của bạn">
-              </input>
-            </div>
-            <div class="profile-weblienket">
-              <p class="profile-title">Trang web</p>
-              <input class="profile-webinput" name="website" type="text" value="<%=data.website %>"
-                placeholder="Thêm đường liên kết để hướng lưu lượng vào website">
-
-              </input>
-            </div>
-            <div class="profile-usernamemy">
-              <p class="profile-title">Tên người dùng</p>
-              <input class="profile-webinput" name="username" type="text" value="<%=data.username %>"
-                placeholder="Tên người dùng">
-              </input>
-            </div>
-            <div class="profile-setting">
-              <!-- <button id="udpate-<%= data.id %>" class="profile-thietlap btn-update">Thiết lập lại</button> -->
-              <button class="profile-luu" id="btn-update">Lưu</button>
-            </div>
-            <div class="iduser">
-              <input type="text" style="display: none;" name="iduser" value="<%= data.id %>">
-            </div>
-          </form>
-        </div>
+            <ul style="border-radius: 16px; width: 360px; left: -300px" class="dropdown-menu">
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" id="click-pers" href="#">
+                  <div style="display: flex">
+                    <div class="avatar">
+                      <img class="img-avatar" src="<%=data.avatar%>" alt="" />
+                    </div>
+                    <div>
+                      <div class="account-name">
+                        <h6>
+                          <%=data.fistname%>
+                            <%=data.lastname%>
+                        </h6>
+                        <div>Cá nhân</div>
+                        <div>
+                          <%= data.email %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li style="
+                  margin-left: 6px;
+                  font-size: 12px;
+                  margin-left: 22px;
+                  margin-top: 20px;
+                ">
+                Tài khoản của bạn
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Thêm tài khoản</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Chuyển đổi thành tài khoản doanh nghiệp</h6>
+                </a>
+              </li>
+              <li style="
+                  margin-left: 6px;
+                  font-size: 12px;
+                  margin-left: 22px;
+                  margin-top: 20px;
+                ">
+                Tuỳ chọn khác
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item"
+                  href="http://localhost:8000/auth/HomePage/profile">
+                  <h6>Cài đặt</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Điều chỉnh bảng tin nhà của bạn</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Cài đặt ứng dụng Chrome</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Quyền riêng tư của bạn</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Nhận trợ giúp</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="#">
+                  <h6>Xem điều khoản và quyền riêng tư</h6>
+                </a>
+              </li>
+              <li style="margin-left: 6px">
+                <a style="border-radius: 8px; width: 98%" class="dropdown-item" href="http://localhost:8000/auth">
+                  <h6>Đăng xuất</h6>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
-    </main>
+    </div>
+  </nav>
+  <!-- container -->
+  <main style="margin-top:50px ; margin-left:30px;">
+    <div class="profilecontainer">
+      <div class="profile">
+        <a href="" class="profile_canhan">Hồ sơ công khai</a>
+        <a href="" class="profile_canhan">Thông tin cá nhân</a>
+        <a href="" class="profile_canhan">Quản lý tài khoản</a>
+        <a href="" class="profile_canhan">Điều chỉnh bảng tin nhà của bạn</a>
+        <a href="" class="profile_canhan">Tài khoản được xác nhận</a>
+        <a href="" class="profile_canhan">Quyền dùng mạng xã hội</a>
+        <a href="" class="profile_canhan">Thông báo</a>
+        <a href="" class="profile_canhan">Quyền riêng tư và dữ liệu</a>
+        <a href="" class="profile_canhan">Bảo mật và đăng nhập</a>
+        <a href="" class="profile_canhan">Nội dung mang thương hiệu</a>
+      </div>
+      <div class="profilemy" id="profilemy">
+        <h1>Hồ sơ công khai</h1>
+        <form id="form-profile">
+          <p>Người truy cập hồ sơ bạn sẽ thấy thông tin sau</p>
+          <p class="profile-title">Ảnh</p>
+          <div class="profile-img">
+            <div class="profile-imgmy">
+              <img src="<%=data.avatar%>" style="height: 60px; width:60px; border-radius: 99px; cursor: pointer;"
+                alt="">
+            </div>
+            <!--gắn lại sự kiện  -->
+            <div class="profile-imgbutton">
+              <input type="file" class="form-control" id="image" placeholder="file" name="image" />
+            </div>
+            <!--  -->
+          </div>
+          <div class="profile-username">
+            <div class="profile-fistname">
+              <p class="profile-title">Tên</p>
+              <input class="profile-fistnameinput" name="fistname" type="text" value="<%= data.fistname %>"
+                placeholder="Tên của bạn ">
 
-    <!-- link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/profile.js"></script>
+            </div>
+            <div class="profile-lastname">
+              <p class="profile-title">Họ</p>
+              <input class="profile-fistnameinput" name="lastname" type="text" value="<%= data.lastname %>"
+                placeholder="Họ của bạn ">
+
+            </div>
+          </div>
+          <div class="profile-story">
+            <p class="profile-title">Giới thiệu</p>
+
+            <input class="profile-storyinput" name="dob" type="text" value="<%= data.dob %>"
+              placeholder="Kể câu chuyện của bạn">
+            </input>
+          </div>
+          <div class="profile-weblienket">
+            <p class="profile-title">Trang web</p>
+            <input class="profile-webinput" name="website" type="text" value="<%=data.website %>"
+              placeholder="Thêm đường liên kết để hướng lưu lượng vào website">
+
+            </input>
+          </div>
+          <div class="profile-usernamemy">
+            <p class="profile-title">Tên người dùng</p>
+            <input class="profile-webinput" name="username" type="text" value="<%=data.username %>"
+              placeholder="Tên người dùng">
+            </input>
+          </div>
+          <div class="profile-setting">
+            <!-- <button id="udpate-<%= data.id %>" class="profile-thietlap btn-update">Thiết lập lại</button> -->
+            <button class="profile-luu" id="btn-update">Lưu</button>
+          </div>
+          <div class="iduser">
+            <input type="text" style="display: none;" name="iduser" value="<%= data.id %>">
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- link -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/js/profile.js"></script>
 </body>
 
 </html>

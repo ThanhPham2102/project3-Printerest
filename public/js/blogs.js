@@ -15,7 +15,6 @@ const showMessageBlogs = (startus, message) => {
 };
 
 tbodyBlogs.addEventListener("click", (e) => {
-  
   if (e.target.classList.contains("btn-delete-blogs")) {
     let id = e.target.id;
     fetch(blogsApi + `blogs/${id}`, {
@@ -27,7 +26,6 @@ tbodyBlogs.addEventListener("click", (e) => {
       .then((data) => {
         showMessageBlogs("delete", data.message);
         e.target.parentElement.parentElement.remove();
-   
       })
       .catch((err) => {
         showMessageBlogs("delete", err.message);
@@ -46,7 +44,6 @@ tbodyBlogs.addEventListener("click", (e) => {
       user_id: tdChildListBlogs[5].innerHTML,
       role: tdChildListBlogs[6].innerHTML,
     };
-  
 
     td.innerHTML = `
     <tr>
@@ -86,7 +83,6 @@ tbodyBlogs.addEventListener("click", (e) => {
       img: tdChildList[4].children[0].value,
       user_id: tdChildList[5].children[0].value,
     };
- 
 
     // Tiến hành gọi fetch update
     fetch(blogsApi + `blogs/${id}`, {

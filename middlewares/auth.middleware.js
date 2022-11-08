@@ -20,10 +20,27 @@ module.exports.notRequireAuth = (req, res, next) => {
 
 module.exports.requireHome = (req, res, next) => {
   console.log(req.signedCookies.role);
-  console.log(req.signedCookies.email);
+  console.log(req.signedCookies.id);
   if (req.signedCookies.role === "user") {
-    res.redirect(`HomePage/${req.signedCookies.email}`);
+    res.redirect(`HomePage/${req.signedCookies.id}`);
   } else {
     next();
   }
 };
+module.exports.requirePer = (req, res, next) => {
+  console.log(req.signedCookies.role);
+  console.log(req.signedCookies.email);
+  if (req.signedCookies.role === "user") {
+    res.redirect(`HomePage/PersionalPage/${req.signedCookies.email}`);
+  } else {
+    next();
+  }
+};
+// module.exports.requireAdmin = (req, res, next) => {
+//   let { userId } = req.signedCookies;
+//   if (req.signedCookies.role === "admin") {
+//     next();
+//   } else {
+//     res.redirect(`/users`);
+//   }
+// };
